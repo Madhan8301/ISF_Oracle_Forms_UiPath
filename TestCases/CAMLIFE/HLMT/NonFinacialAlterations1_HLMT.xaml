@@ -1,0 +1,495 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="NonFinacialAlterations" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ExcelRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="txtIdenNo" Type="InOutArgument(x:String)" />
+    <x:Property Name="In_CurrentTestDataRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="CurrentTestRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="Test_Start_Time" Type="InOutArgument(x:String)" />
+    <x:Property Name="Test_End_Time" Type="InOutArgument(x:String)" />
+    <x:Property Name="ExceptionScreenShotPath" Type="InOutArgument(x:String)" />
+    <x:Property Name="CurrentTestCaseRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="ExcelRowMain" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="PolicyNo" Type="InOutArgument(x:String)" />
+    <x:Property Name="BillingNo1" Type="InOutArgument(x:String)" />
+    <x:Property Name="BillingNo2" Type="InOutArgument(x:String)" />
+    <x:Property Name="ScreenShotImage" Type="InOutArgument(ui:Image)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>905,4426</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>NonFinacialAlterations_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="NonFinacialAlterations" sap:VirtualizedContainerService.HintSize="568,4361" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Jubilee Insurance Company" sap:VirtualizedContainerService.HintSize="506,4250" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="472,3959" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Boolean" Name="formsWarning1" />
+              <Variable x:TypeArguments="x:Boolean" Name="warning" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Contract Administraton HLA'" sap:VirtualizedContainerService.HintSize="410,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="rCDx7toJ3kiXGbFJpg8DJA" DesignTimeRectangle="573, 38, 162, 28" DesignTimeScaleFactor="1" FriendlyName="'Contract Administraton HLA'" FullSelectorArgument="&lt;java name='Contract Administration ALT C' role='menu' /&gt;" FuzzySelectorArgument="&lt;java name='Contract Administration ALT C' role='menu' check:text='Contract Administration ALT C' /&gt;" Guid="fde86cf9-ad70-43ee-983d-1d4a25f6d68b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKYAAAAgCAYAAACYYQOyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAMsSURBVHhe7ZjrseMgDIVT1VaRNpw+3Ib7cBcZl5EGUgBrIAJJFmDH3iw/DjPfTIKE0OPYuXNv7/fbAdAbECboktvj8XAA9AaECboEwgRdAmGCLoEwQZdAmKBLIEzQJRAm6BIIE3TJbmGO88vJ9XLzOJi+3zKMk5sujqnZewfV+5pH084ZpmX1XNw0fJf7MM5rN/f184iv54qe8hhH7/+WpjCHYXRhRq/ZjazxNLhluibBXxS89w6qeVn2Ce6sMP8VV/T0V0LUNIUZeq5ESQRxFmxH6UqYJLTg3374IMzrqQpzGKa13e3BEOntSmuZso0KnOKwafnY0ZaX//mMe4ubU8A4eO3rF/+5LeVg3UFnNPlh/MRidXioL3GtNc1ZmKU6c015UV/TmXX4pfOWb/4u11U9Lcdg9385c/IpURemSqJGSpCEoL9TkewNG/8cUAPVDeeFGg+KiLHJQfrvqYfOkHB5fMueRaqGvKnT2tvWXj5f8pX10PkszpM9NWN87j85c/+9xA5htoN4rJ8zvkdJ8gaIItnnbNP+Yyow75VjaFp2j65D52HVuR2kzru0t837uK/MhcN983cd+1hPhe3kzGnP4ro3pk+IPRlhjxdhxKrZa3fH4vn6xDAaJc5VYhIxBH+jyLdAEKFZJx+GvKO1V/rc8vU20QqWtz5nfRe+pZ5WYpydOe1ZnPobM9qvSVLbTf/0s2n7nRVmjm+tGLc3YSYfkbudixm71dNKjP8mTI81CGGjJgRRqCSYUFpJarvpbzWC3dsqumXn9fD9eG61rA8orynZD9Rp7ZU+t3zJziGhhVyVrxn7YE9FLsxPnj3WC4umMNNPmUo+DjE2QPhV/xAuJ8kbWvRXjYg+flGMRg7qDo72LdnSG0bFXDd+LkwuAtP3kp6WYzT7bd1n7Fk0hUmE/MXaBk+J0WJD3pNkusMLoFCAzMPbVeMqOYjzaj/el+No4oMY88li9Gvds/5dVKlT75U+t3yDbTMYefaKntZinJ15id3CBOCXNIW5Z1nnADgD3pigSyBM0CUQJugSCBN0CYQJugTCBF1yez6fDoDeuP253x0AfXF3fwFKNqJuXZbkPwAAAABJRU5ErkJggg==" InformativeScreenshot="921f3040253c71e79925a8b1b39e7501.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/14_LtLbxY0i-f38vuOj5hQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'NonFinancialAlteration HLA'" sap:VirtualizedContainerService.HintSize="410,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="ac_70qa2g02v_RVtqLHu_w" DesignTimeRectangle="576, 332, 241, 24" DesignTimeScaleFactor="1" FriendlyName="'NonFinancialAlteration HLA'" FullSelectorArgument="&lt;java name='Contract Administration ALT C' role='menu' /&gt;&lt;java name='Non-Financial Alteration mnemonic N' role='menu' /&gt;" FuzzySelectorArgument="&lt;java name='Contract Administration ALT C' role='menu' /&gt;&lt;java name='Non-Financial Alteration mnemonic N' role='menu' check:text='Non-Financial Alteration mnemonic N' /&gt;" Guid="e40f7209-1350-4b94-8390-12e1155784c9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAPUAAAAcCAYAAAC5+vkvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANjSURBVHhe7Zltcq0gDIZdkXtxJ/Vf1+FMt+ECzhY8e+IKGAgxKvhxbi/37cwzU4khgeQVOm3M/PN+vwEAFfD9ehmIGoCKgKgBqAyIGoDKgKgBqAyIGoDKgKgBqAyIGoDKgKgBqIxdUU/TYLqmMU03rG1DZ5qmM8M0rWx3ME2j6ds5to2v0A2TmcbetE1r+vGZHEooySX33bFv3VrbfkzGpf80DmZ4eA94jN+072BNnqgXESW2D4laNnQN5IiC1t91633m/p8QGET8O7A61MYlWaLu+rmobW9G3lgQ9WmyRE37695NP6oQ9f8J3VI1GydP1HNDDV0qMCnq1XWZXdlDUwy+QekdefpzckStNvdODP9OtFlo/iz/nDUujZ8Va0ckdr8b9yFdYiqxvn6+khhhfpknr5Pz7Uy/XO3JtpWvHI9jbK031x7ohP2d0exEtqipGUJzMFGHoi7FXD1TY7DT3v+9GOeT0BzUqBq8uY5i8LWQf2I/9JdrTOdLcsmKtS1q8qe1y71arzvOJfMM/su6wjq58ArzTeI/UHugw0W9J+xsUdtnW4xwGnBRK1fxxL4UljeNbBRJaA62CCLkwJvrIMY0jqGpdPuRf/ydz6G/mxNrZy55C3Lvx9z25lJrweoo5/LzleWb2B6oPdDhGtDsRJGo/fO6mO539iV27+40hbTTGIdEXXZSH8fwefOPRJ6/1rycq7E47uqdnKTa6afP5U9BHjNi93Ivdm6+SfwHag90qC6ajVMkaotrmrm5eJNfLaxsRNd8N4ua1kKNWuzP1kt2ztVYYZ7gq8FPP30ut5eiFhwtdmm+iQ2i/hi2B7RxSbGovdjmgvRC1LJwXPQnCnu7qLXmY3kf+it2ztVYhP/ArT8e3sfXYi8vHof7E1rs0nyT+Eo8P3a+9uAaxaJ2465o7OSQ18Od62KY46Cwj4ia2b0tnk6H/gVrPBNLm3PLluaV1ii8x0TK89FiH+YrYyTx8/fFPm+Ngfs4JWqL+7uPnSihmK4ZYlGd7URhab67RG2ffc6EHY/ry/EvWWNprDiHvt8Wf4rTv7KUWFJYSfxlDRux9/JN7HOMK/uyNQbuY1fUAIB/j0NRx6+3juYDAPh74KQGoDIgagAqA6IGoDIgagAqA6IGoDIgagAq4/v1Mn8AA6Qul1FDz/EAAAAASUVORK5CYII=" InformativeScreenshot="0b3c1a1116171209a4d29b2fb6fc9f7c.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/88PAwwfXM0iAlxHLF3_iug" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="410,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'ClientAlteration HLA'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="DPIE0JK06U-8qct6XcdAoA" DesignTimeRectangle="815, 335, 172, 24" DesignTimeScaleFactor="1" FriendlyName="'ClientAlteration HLA'" FullSelectorArgument="&lt;java name='Contract Administration ALT C' role='menu' /&gt;&lt;java name='Non-Financial Alteration mnemonic N' role='menu' /&gt;&lt;java name='Change of Client Details mnemonic C' role='menu item' /&gt;" FuzzySelectorArgument="&lt;java name='Contract Administration ALT C' role='menu' /&gt;&lt;java name='Non-Financial Alteration mnemonic N' role='menu' /&gt;&lt;java name='Change of Client Details mnemonic C' role='menu item' check:text='Change of Client Details mnemonic C' /&gt;" Guid="e851a71a-e5ca-4926-9073-204faa51b382" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALAAAAAcCAYAAADBaTXLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAN2SURBVHhe7ZjbjeMwDEVTkXtxJ+v9mi4GcCH+37TglLF9aGI9KYoiJSeDjCYMcABH1OOSupadXD6uV3OgH/2M8gme/fPvv7EGvt1uijIcfz8/zeVwNBVUlJ/OcfiqgZVhUQMrQ6MGVoZGDawMjRpYGRo1sDI0zQbelslcLhfAZJZtj/F9W8yE2kYn5czn1VObZ9dp31azVuba980sE9QFmFdyDAe3FuY7c4aIBo5FmBaz7UlA2LR5dW2/zcD7vpoZ5Efx6tpI8wZ907KR7Vg3xyM5vNTA61xP1G6Uj/06Azfk8+raSPPWDOxi8g0KeSSH7/QGa+CeJKPIZc4eVXCs65NiB6G4cfya98nGez0uFvrOZvUGiidL7JNiFEV//1gtdBKP21O1uW8gvLYxRjNXE6yRNmndwAf2JgO51bTU1sLtZaySMzGupY4UvIHRwhxRFDiR3KPUF4HY8CzeOD4WKJo5xH3xwYbAUzC0BXD/4ruQe39tys2UNIs1kTT6+WsG3tf7YRPWatKS1mrbTyJnQrNrO2fiBgM7QVQcQonIhW+FkfK4MP4oNtKSFYyIc6ck2R+0wbXhuNjXxvPxNco86zlBza4vV9N0HeKQJgOHfJu0pLXa9rN23Va3Fp58Aud9yTZbqPudHimTpMbD0yCPu2I4M8N5E9QGWh3kfHU9ECkOqc0raabWqM0F14t9O07gM1riHFn/Uhsea387hP7gxD/DQ+/ALk6LtHGYhJ8L/sXEJYnjTQZGcY6HDXyyNlJO2RyEhj6NvIGtkbyBerX07GdNZ5rj4NypzBr4gEvMxvzClMgsCcow9u6tJ1mMR0nCNjhXiHNQ/bP5KkWHnKlNmVN9DbEmgkbOwPgG7NVi+zfup6yTPww4RAPHl3sk1m0QKAAhMksCFcjF0h0sjvdJhs1Id683CaGT25TYP/xow98JPZgztclz4jW31qT+FHDzYwOT60paBMM7XffxhPbs2o5DBxGRZyuigQPZewsQGuKUCNyWz3G0p6K0jE+m9ePtX3apGHETsjXSfJiiP3gf6ylqT23KnOqaW2oS1ybeJcu5E/SpzNcPr9W6n0XO1sR4bFqnh2YD/0RsIdDpp7wXooHzO4WGGvdsikdWOC2Ik0d5H4Y6gcO7ZUTN+/YM/QqhKGpgZWjUwMrQqIGVoVEDK0Pzcb2aL81yFVqF2/kdAAAAAElFTkSuQmCC" InformativeScreenshot="768ff8af61092be9b3a0578b3859f36e.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/FoMbyT4AUk6snz36abOHng" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'push button  OK'" sap:VirtualizedContainerService.HintSize="410,107" sap2010:WorkflowViewState.IdRef="Click_3" KeyModifiers="None" MouseButton="BTN_LEFT">
+              <ui:Click.CursorPosition>
+                <ui:CursorPosition Position="Center">
+                  <ui:CursorPosition.OffsetX>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetX>
+                  <ui:CursorPosition.OffsetY>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:CursorPosition.OffsetY>
+                </ui:CursorPosition>
+              </ui:Click.CursorPosition>
+              <ui:Click.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bea62e09-cb3a-493c-9a8a-0001736e7f29" InformativeScreenshot="70414d7c62437ea9cf5ff3fa67988ebc" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtDialog' title='Forms' /&gt;&lt;java name='OK' role='push button' /&gt;" TimeoutMS="2000">
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:Click.Target>
+            </ui:Click>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="410,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,219.2" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:UiElementExists DisplayName="Element Exists 'jp2launcher.exe Java'" Exists="[formsWarning1]" sap:VirtualizedContainerService.HintSize="387.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="450b42a4-4225-4654-a737-84ee96332aa2" InformativeScreenshot="1fe0c0612dda13294403ca73348254a4" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtDialog' title='Forms' /&gt;&lt;java cls='*' role='text' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="410,52" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472.8,492" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[formsWarning1]" sap:VirtualizedContainerService.HintSize="410.4,380" sap2010:WorkflowViewState.IdRef="If_1">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376.8,196.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  OK'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bea62e09-cb3a-493c-9a8a-0001736e7f29" InformativeScreenshot="70414d7c62437ea9cf5ff3fa67988ebc" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtDialog' title='Forms' /&gt;&lt;java name='OK' role='push button' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5" />
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Policy No'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="410.4,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Text="[PolicyNo+&quot;[k(Tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="4eYgTFf1qUKKdaXb-SeM8Q" DesignTimeRectangle="397, 468, 325, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Policy No'" FullSelectorArgument="&lt;java name=' CAMLFQA - Underwriting Sheet (NB_FRM_02) (Version : 1.3)' role='internal frame' /&gt;&lt;java name='Policy No' role='text' /&gt;" FuzzySelectorArgument="&lt;java name=' CAMLFQA - Underwriting Sheet (NB_FRM_02) (Version : 1.3)' role='internal frame' /&gt;&lt;java name='Policy No' role='text' /&gt;" Guid="26697785-f40f-4a8b-a6bf-acb3071b42c6" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUkAAAAdCAYAAAAn4p79AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACuSURBVHhe7dTBDcMgEETR1JxTunA/roGeiJDsSGAxKWDfk+YCe/6vDsCWSAIEUyQ/52lmVnqrXyTH5/s4zMxKbw3lI5KttesFoJbRwbWBj0gCVCaSAIFIAgQiCRCIJEAgkgCBSAIEIgkQiCRAIJIAgUgCBCIJEIgkQCCSAIFIAgQiCRCIJEAgkgCBSAIEfyO5HgBUMfq3jeQwQnkfmZlV3GqKJAAzkQQIRBJgq/cvSeNeFigTWyMAAAAASUVORK5CYII=" InformativeScreenshot="5d11b71e54676143741107a4f343a2bf.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/8fjvl9mF5EG7Qy_n9SySHg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="320, 467, 71, 25" FriendlyName="'Policy No'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEkAAAAbCAYAAAAwNaIgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGRSURBVFhH7ZXREYMgDEBdi4UYh3Ecxj38piGCCRQwtlTrXd4d10OBxEeg07quvmxKzhR/lQ4qSYBKEqCSBKgkASpJgEoSoJIEqCQBJyTN3k6Tn8pmrHdLHHLI4p0J8yysVuuPIuXK1/081nlJxkG4yJKSMUJRV0uCZtPKd0kCFmcwmT2XLr+SUsIk7Rv4T5KgupzdnoVmYPxMpXdcSYvzFp/F+bhwZdxs8X19c7gkaK01urkSg45bCsz6YVBIoiul7Mf58FHb9E2EgVIoN2O2YV7rmNM6NK4Rq5krMfbiZh+1kz07kNSrDqgwE+Lhy5hLUdUESaJ5rhqrnSvx9XHjVO+nE5L69xsbGz+8/BiCSQo9rKbUOrGukHS8O19UUgDfG2/xHun9o+aS9mrClsdq50qMlZTG4G5D99M7KcV4Szqtz8ZUKSQBVE1FrGauxGBJQAg2+N+Nx0sfW+52zrskqiYeq5crcULSf5AkNY/kD3iYJHZE4pMreI6keD/hxX2lIeBxx+0OVJIAlSRAJR3i/QtXLjn/KJainAAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Fetch'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="TdFSAuJJn0y2ao_OXxDO6Q" CvElementArea="636, 200, 78, 21" CvTextArea="660, 204, 31, 11" CvTextArgument="Fetch" CvType="Button" DesignTimeRectangle="637, 200, 78, 20" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Fetch'" FullSelectorArgument="&lt;java name='Fetch' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Fetch' role='push button' check:text='Fetch' /&gt;" Guid="0147c26f-100f-4792-ab68-028ef2a3c530" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAYCAYAAABp76qRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEhSURBVFhH7ZjbDcMgDEVZi4UYoF+dgmyTj4zCHvmmGENq8lZClKi9R7pSC64lTkwrVXlwir7vY1R+gZwLRFbKRCTYx9hbIRLs4911MdIdRB7k1TQQWQOIrMR9Ip31WimvRLR1aXMZ11pvbJveLZB67+lXi9tFmg0nJc5bHaRvfQgiE60R06pDDQlJEvO6tmGF2nxrdWgW1WWRuty7kgddbePjUQfBPE0uSCWZPFyjiZR7cgpz7yTWWS16XMPjJpIPLQVzuK4UybXpAUikVKJ4GNfwUJFLh4bIKQsiBwmzsuaudu7RepPlQSRD34u0x9e6FDBc/dkfG177L5E/BkRWAiIrsSmS/h4C65CjVZGUXISsZ+xtIhI5FoisFIiskt5/AJKw2fVmJaNrAAAAAElFTkSuQmCC" InformativeScreenshot="757939e74cbc7cea22fb14a2b4706b69.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/3XQxuG__c0OYqT6ulx1uoQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="410.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK ALT O'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="2wW5gUxKykS3iMw6ix_zqg" CvElementArea="279, 359, 51, 29" CvTextArea="298, 367, 17, 12" CvTextArgument="QK" CvType="Button" DesignTimeRectangle="280, 360, 48, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'OK ALT O'" FullSelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' check:text='OK ALT O' /&gt;" Guid="0d8c6268-c507-4946-837d-e42d162d38f1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAeCAYAAABjTz27AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVFhH7ZfRDYMgEIaZiF0YhT51CxMGYQCfeMedrj30FFFbqC05tSZfInjU/8uhpsI5B2fimkJCCNbMssaDFFrA+aCcY2Y6SYlFuq5jyb1tA2+FSGbtR7hxa5rXQkeSQa4ldDQZ5C/EnU2hb8t4b0HL6AOozHTNapBSg/V+qDWgkppcqgiRjNR2nDNqChwLkYwyvVwpdYSSDoS5EFyBQYnx+j4ZpI6QUYvt03dNgrYkJEE+7ykS8VL4CAk8X27NUphtOZLj/gwVvBTCGDs6yFJ9LlWEkJLXNhKEP3ieNoV+IVWDakKhKyus1e7hWh0KEweTyhLCv7VriznyVihMHkgqSwghKc5imC1bCMFCBBdxhTKOmWOBLWgRV2ZZ48EZOJmQgwc1XbxSznOQzwAAAABJRU5ErkJggg==" InformativeScreenshot="140b8c874563adef372bf1270dac292f.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/REuUD7-VHUGzkxC5Bqp0Cg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Alteration Initials Checkbox'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="517yU1VqvkS7u91muS0j5A" DesignTimeRectangle="304, 434, 16, 20" DesignTimeScaleFactor="1" ElementType="CheckBox" FriendlyName="'Alteration Initials Checkbox'" FullSelectorArgument="&lt;java name='Initials' role='check box' /&gt;" FuzzySelectorArgument="&lt;java name='Initials' role='check box' check:fulltext='Initials' /&gt;" Guid="428e18cf-e069-40fa-bb1e-64d4eb967443" ImageBase64="" InformativeScreenshot="a95fdfdeaebad00746353c6b9c16c529.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/u0OUsX1-tEmImyNgSAzUKg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="230, 434, 59, 21" FriendlyName="'Alteration Initials Checkbox'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADkAAAAVCAYAAAD8dkbIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAE4SURBVFhH7ZRbjoYgDIXZFfvpbtjMsJW/axl87rTcRAQJkxgnjA8nUVsP5wOt2raNVtcLuYpeyFXUhXTOEihFShtC55o9pZxDMpr7FZBt9I/qtWb7r3QrJFpDYGy3fqU/CVnLoSEt70OAnNUjkPs9kAHNi0sATWBDgDLU1/cnXieVz/bQshFQ9ok3nv2k39/ndRXpic2bh2QwCXKuV6GqkzyHju9z/biJbT80AVA2tbyuc7f0i5PsQE1CpnXQWj4hIO1rfb8EprR8PegzJI+RHoP0fv6eQ/NwQoz+Pb/cH1V82iM9B2nBh93/6Wv/lEs2I/+b0Xuk+yBT/wAy1fPn2PEL9TgP4gZqg4fMPd0GKR42T0Oerp/zdN3rrDy102Br+B+ma8hRZu6pC7mSXshV9EKuon8AudEPXnxJw0sMcUAAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Alteration Initials'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="410.4,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Text="Suryakumar Yadhav[k(Tab)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="3LPMEuQR90aMzokbM9ZmxA" DesignTimeRectangle="659, 431, 281, 25" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Alteration Initials'" FullSelectorArgument="&lt;java cls='VTextField' idx='17' role='text' /&gt;" FuzzySelectorArgument="&lt;java cls='VTextField' role='text' check:text='YAP TARN SONG' /&gt;" Guid="21411695-80cd-4782-a826-78a6163e16d8" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAR0AAAAdCAYAAACXHbjPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANaSURBVHhe7ZzdjZwwFEZpi4YoIE+pgu2Gh61hKqCPeXZ8wb/XNuOZhYiVzpE+RUuMrz2ae2TIKsPz+TSEEHJF/n5/F0E6hJDL8lI6tQGEEHJmgnTkhz9fX4QQclq0cCSFdB6PhwEAOAMtHEkhHQCAs9DCkSAdALgMLRwJ0gGAy9DCkSAdALgMLRxJRTqrmcfBDMNgpmW/cWOdzWivDcNk4uU4dsgGC4uZtvEq42Tm1Q1RLFNlvE++mB/W9WNqe0mvVVjtvb62m3dR+1mXuRgzZ4PeqG8/92yuYTTjNNvRAPdHC0dSP+ks0/4FH+OX2wuhLiKJblbXWMkcW8NuY8emeHZcA6b3pvTUzRaq1+LXkY7rkY5flxvj95Ou031247y4a6tZ5nG7FpfUWb+Yy+L33vpsAG6EFo6k+Xi1S8bJofFFX7dmGs007X/mIqk0pGW/R8mr4Fg6XXVVgWw/adOHaz3Sqe8p0vp7PXdP/Ve1AO6PFo6k/U7Hi8Ye5eesYT2JGNzYMRtQb5qfS6ezbrd0/Fjd9DXifaO9p1hbOJlUVp3tu6P+wVwAvwUtHMnhi+TsHYtq4iilpGEySVSkEx6vjhpbOJBOb910vcVjUBwTZdQjHSm/y2OPPW0ljz6HQs0k8rp+n5wB7o0WjuRQOqHBK42omyI/SQheMCoHL5Ijbel8Wjd/+RqbPuxRTnQd0hFWK5D9c3Fx6/xEOq365VxeSj7pngHuiRaO5Fg6vjmK5q+cCorHgda9PbSk80Zd162+eeVxKJKPyU50HdLZkRfEUT7bVMVaIrlEOuofzFWKFuCeaOFIPpNOOAFVEsZeIJ136gbJxBNCS0z5vL3S2anKpNizlmVP/fbnh3Tgt6CFI/lIOuH0kH3rfWP5Zmg3zWvq0nmrbpCOJTR1o+kt8bRxIB13+pD79hVomVj8CSUZ0/wn81f1D+ZCOvAb0MKRfCAd3eSRXApnS+fNuklDC6Gpt+uVMYWY6qzJI9WWyjuq7l8O7Km//TKiF82e0c2nygLcDi0cyQvpAAB8jhaOBOkAwGVo4UiQDgBchhaOBOkAwGVo4UiQDgBchhaOpJAO/0cyAJyFFo4kSMeLR6RDCCFnRAtHkklHAgBwFl3SIYSQs4J0CCH/NaV0vs0/VpNgz3goecQAAAAASUVORK5CYII=" InformativeScreenshot="0a9dc897ed8370b5e47ed1165e4ebad9.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/0gsOHZSoik61WcJZG5Yl8w" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="737, 363, 116, 22" FriendlyName="'Alteration Initials'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHYAAAAYCAYAAAAvWQk7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJcSURBVGhD7VfLscMgDHRPObkUN0AXrwXXkCq4pg8uL53wBEgG8TUTJ3nDcNiZgAXa9UqYLFo/9cR4mMYOimnsoJjGDopp7KCYxg6KirF3LZZFLzHWTe/qNxP/Djz0vpq8m5b6qpytPfO6V3HX6jIOMWJOr+tuGwuCkrn1540iQ3zR2EC3kj96Td5FHWaN2M/Gf93Yp5bCJLx9sGuvRr+xBl26VX8hcPwHY9UdSNxgzsybIyvqZhJpn21aMMLxCdCqXIq/6TWc7+IAnVR9aXndWm52vZC4ppiTOBOII+VFsE9aSzeMRZirXTB9xoIYboQfS0Oy8tyOjxdMhOP4lkCMZ53TyQEM4hxILwHjC8au+8PHlHImHev3zHJq6Fa7M9UUVfib8YvQfXli3cDEunUuMb745HnBqJMC0/grOLg1Ht4ENh/u08qZGIsxErocTi132oQc6rrJTHNSCfnw2is43bG0eXgMHAkzyFdXy6i6wJyxr3MgvYS6seGeOdg8uY61OcEYuFAp6vCizoxuO0ac+GfScRRTsqBSM5XL0OwWzHFxxzI0OUTxiW4Hdrdo5YyNxXhfXL263b6mII5vbVx4ETq/seVvpP3WNIxQKLAoINm/vh/jeZIDvWT/nPQSMD6n+5g7mTMylsa+40s6+djF82O+WFSIPmMBrnKDeXOsWBIIOCacWFxzmAVkcjdSEF1+fsbYCzgwYA4GuIWbI7QjpzxusW7ej12s6zw0q2GsHbNbcaQ/g4qx70BMOBczcQWmsYNiGjsoPmzsxKcwjR0U09hBMY0dFNPYIfHUfzUyf6uoGsNAAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NSelectItem DisplayName="Select Item 'Alteration Decision HLMT'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="Approved" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="5">
+                  <x:String>Approved</x:String>
+                  <x:String>Pending</x:String>
+                  <x:String>Reject</x:String>
+                  <x:String>NTU</x:String>
+                  <x:String xml:space="preserve"> </x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable ContentHash="MFF1Oh-8OkKKSn8KxhQzzg" DesignTimeRectangle="96, 793, 121, 25" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Alteration Decision HLMT'" FullSelectorArgument="&lt;java name='Decision ' role='combo box' /&gt;" FuzzySelectorArgument="&lt;java name='Decision ' role='combo box' /&gt;" Guid="ae072f85-7dc8-47f5-b215-c08c7e9298f7" ImageBase64="" InformativeScreenshot="3f73b6d0cab785ebc231f776a746a429.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/uiJxES6_J0KtOsgVdIz_PQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="113, 770, 84, 24" FriendlyName="'Alteration Decision HLMT'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFgAAAAZCAYAAAC1ken9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGjSURBVGhD7ZnLjcMgEEDpin4oYU9pgZNL4Z4afKEXfJ7lZzTAOPImHiUbzeFJxuDB8/g5itq2DQQ+1LquIPAhgplRP8sCAh+yBzMjgpkRwcyIYGZEMDMimJmnBIfgwCgFakAbBz4E8pm/EIIHq1NMA+5BvLPt3slrgqPQ/Z53FvRw71lEMCE44UxKVoP1n5nsO7hUcHAmClZgXBEcvIszTOd7ZQux3RYSvAWTZ+BeX+KNMzOXDY5Dt2t94rbagqsD3t5bG9RGt/flgEWwth4lUxJMie/lJBnHSGXfPduL87bISCLw9TwQNWYq1z7p+rLK8DtecXZQ8AlG13t9kVOTG2Y75kiwiqvBON9kTIKJPo8GvQzyvAKuhm2LaFIIxpmIY+Q41MzM5Upa4nkG0gOBY36VYHzIUbMJgwdjqjtI3OP9NfY9DQTR59cITgcW/kzDyeT9cJQxJtuJ6Nt2W0vth2rXYqZybnuwB/8bwR06Jt3/0MgHW06gEpf2fqKX+vkrgko8l7uviGNB574iPlywcB4RzIwIZkbd7ncQ+JA/PVlZ4BcZkJNBJzCwYAAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Reason HMT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="410.4,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Text="TEST" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="nHyWaVEkNkuNG0uFkR8BhQ" DesignTimeRectangle="334, 793, 92, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Reason HMT'" FullSelectorArgument="&lt;java name='Decision Reason' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Decision Reason' role='text' /&gt;" Guid="1bd96706-a8d5-4cc0-ada3-fc0275fe4f61" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGAAAAAdCAYAAABVJGknAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACZSURBVGhD7dGxDYAwDAVRZqZiC/ZhhqyTOiiFERAhGsw1d9IvIqXym2qtzXETAN4FYNk2l7z7vQ+A/pjX1SUvEOLeA0AppVlO/cZx30cAy00AOAHgBIATAE4AOAHgBIATAE4AOAHgBIATAE4AOAHgBIATAE4AOAHgXgHig31fv+0jQCDEJ5ezKO59Aeiz/M73HgDcvxMAXW07Un2QVgAAnwMAAAAASUVORK5CYII=" InformativeScreenshot="f1ff353d085c07d33e9141b58a12754c.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/-msdGeRcN0CDvZcywWxbgA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="224, 795, 110, 20" FriendlyName="'Reason HMT'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHAAAAAWCAYAAAAYTRgMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJBSURBVGhD7VcxksMgDPSv/B9ekS7Xus8j3Ln35BH2F/IGUnMII0VgMA4hM8cNxc4EEJKWRTLpns+naqgTl3lWTcCK0QSsHE3AytEErBxBAaWclLh2qvtx0Y+TWqV0bHMg5aqGm/Z5FWo68HfWLhcxnt1NqOFRPt43cCygFgzn1mVQvTeXiz8nIONEc7ehyGX9Nk4LCJhGOMy+mtuZwn/g+ZaAchGmxYhlIyYfk66QnlpPP7q3Vj4GJaCCaH3z51eWGY/cT9iOYnJbXSmTPehX9egWiDZaCMzXx1kB3+XJW3CMG/n9kEuWgP19ZQG2oJAMjoEc9wHj1dnrCrPetwQhOf57L7T1CWMbM7y+HT7PMdQOeY40F+NxkqcfM87N2n3IJV9A9hvXTYIY0KtWjpiAnb7lYlkpwZ2AgZixS7Udprsf99BetIfYDLzCUjxpboFqErqKrJ8Ut0JcslsoJRaAf9u4D+MnVFlIHGBbUExo7rOIgJYn+udtLsWTcof2dtdViBWa4FaKS/YjJnSDOLjYu7VIMkCe+r2OvRM6ELOkgGTPYrzL088B7XbcCnE5LSB8qPnfCB7A9HD/sP0EnORcW3Mb8WLYOCE78gljYxv5bmQKaOaQZ8BnkKflhT6oYu16nFsZLscCQiIInUQPLYJtNh90cIo2uj1AMq/1/Ss0lIwZOy+1eNKGaPLlli8gwHQa8I+XNcFzYvnQqxFFi3BDv59yCQrYUA+agJWjCVg5moCVowlYOZqAlaMJWDku86x+AWZH1MrwmmAuAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Alteration Process HLA'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="VyrxijsYZk6leOEdK-rtbw" DesignTimeRectangle="652, 784, 67, 34" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Alteration Process HLA'" FullSelectorArgument="&lt;java name='Process' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Process' role='push button' check:text='Process' /&gt;" Guid="9987459e-a572-4a8b-b1d9-2243cb7a6a72" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEcAAAAmCAYAAACWGIbgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGySURBVGhD7ZnNjcMgEEbdFf1Qwp62BZ9ShAvgni7oBZ9Zhh97jGESKbasrL9IT4qHGex5BnLIMM+zB22GaZo8aIOVI7CTc+dP7WIjp3x47C78Pp8RHtvJ4dd34+fx2FxDDgNyBCBHAHIEIEcAcgQgR+AjOc4Zr4fBDzVK+9G6Zs03cYwcNXrrkgxnizD19YIOl0PYUcUVpA3kiHLWHOWVohWlvQm5tMJGnfIIFeYwbKU5O3od8/O4Nmws1Ib51jG2cp3dzpvrenGJE7dVllBy2DZbYyEnxFKzjZrQAM1rjU4NjXZzz1JbrmMuezHvfOf91Jx+IPNmFoGs2WUuLiB/bz18qzY1m+SXxmmlamOXe/biEqdsq1c5rTfHm5be7NJkA8qP92PbsbyoXryen3OJnKNXTgvLzzR2vvTiLa6RU2KvzpxcsxHHxmItHbSsNq2stMXoUFe5rhevn5dziZwY52+QHjQ3u47vf60WuXQIV1uk1O5/lbLgTrzcr8VHcv47kCMAOQKQIwA5ApAjADkCkCMAOQKQI/BSTv1n+l2gvkU5REm6I7WLnRywAjkCkNNl9n+gKjpqyUW22AAAAABJRU5ErkJggg==" InformativeScreenshot="9a18834bd864c76cf6baf59066eedcfd.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/u2EALO1T9EOQLavfIRWOGA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="410.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,219.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:UiElementExists DisplayName="Element Exists 'label PS976'" Exists="[warning]" sap:VirtualizedContainerService.HintSize="387.2,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+                    <ui:UiElementExists.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b3e90a99-02c4-4699-a740-d9014fe426fe" InformativeScreenshot="ee313ddca399ea82fb41c6c503f5617b" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;&lt;java name=' TAKAFUL - *' role='internal frame' /&gt;&lt;java name='Warning *' role='internal frame' /&gt;&lt;java name='*' role='option pane' /&gt;&lt;java name='*' role='label' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:UiElementExists.Target>
+                  </ui:UiElementExists>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="410.4,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="472.8,492" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If Condition="[warning]" sap:VirtualizedContainerService.HintSize="410.4,380" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376.8,196.8" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT">
+                          <ui:Click.CursorPosition>
+                            <ui:CursorPosition Position="Center">
+                              <ui:CursorPosition.OffsetX>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetX>
+                              <ui:CursorPosition.OffsetY>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:CursorPosition.OffsetY>
+                            </ui:CursorPosition>
+                          </ui:Click.CursorPosition>
+                          <ui:Click.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="a5ff494a-492a-406c-a1fe-fafbd4fec7d0" InformativeScreenshot="3b36129ff4d31ee090eb9576aac7486c" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;&lt;java name=' TAKAFUL - *' role='internal frame' /&gt;&lt;java name='Warning *' role='internal frame' /&gt;&lt;java name='*' role='option pane' /&gt;&lt;java name='Continue ALT C' role='push button' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
+                              <ui:Target.WaitForReady>
+                                <InArgument x:TypeArguments="ui:WaitForReady" />
+                              </ui:Target.WaitForReady>
+                            </ui:Target>
+                          </ui:Click.Target>
+                        </ui:Click>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_8" />
+                    </If.Else>
+                  </If>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Alteration Process 2'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="7707b292-1040-4f7e-a651-4eb7d2067494" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="YMPkTCore0GErgS-JPYmuA" DesignTimeRectangle="671, 565, 298, 31" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Alteration Process 2'" FullSelectorArgument="&lt;java name='Would You Like To Process The Non-Financial Alteration' role='option pane' /&gt;&lt;java name='Process ALT P' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Would You Like To Process The Non-Financial Alteration' role='option pane' /&gt;&lt;java name='Process ALT P' role='push button' check:text='Process ALT P' /&gt;" Guid="efc46367-3cc3-430a-a76c-51c755c622a5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAS4AAAAjCAYAAAAqqecpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJdSURBVHhe7d1dbqswEEDhrIi9sBT61F1EYiEsoFsge6LMwBBjBsiPUmN6LH3CieO00o2OHPpwL1/XawcAOSFcALLzULgulwsAJDVrUvggZhsYDAYj5bAeTW2ySSwM1u12A4Akvn9+pibJVYYbLouW9yayJpgzZ878k3O5GuuSXGUswiWLMsJNAJCStUmuMggXgMOzNslVxixcRAvAEREuANkhXACysxouogXgqAgXVNs2XVUMf35eKrqqad19QAqEC8rCVVTNYq2piv7zUHZ1S7xwDIQLaitcbVt3Zf95KGvChWMgXFCPhqttqq7oT1+VnsLka+RwElt81Szr6D2eXI9OeMPPDdfnId1bx7kQLqitcNWlhGAMlAUiCM8UnfG5/cfzE1y8LvTraVF1zfQz5/fZ7Pe4x3R93Z7DeRAuqCke/b/70v304wWhrcvZa+LnvLCE3P3OKS9cD+2t43wIF5SFyztxhbwIaXjG05H3Oi9MoeHmvxfM++8znPpGwcnM7K3jXAgXVPJwRfvX2ElsiNTyPffWcQ6EC+rtcLnPDeHw9oS8/Xvi+2TPriNvhAvqrXDZ/bHVm/EPPg5OXWHMvBPb3oluL5bIG+GCsni8Ei593uLTf25UdJ/p6fU4jhqn19dxLoQLQHZWw0W8/p/hpLLO2wOkQLgAZIdwAcjOZrhsUYa3GQBSsDbJVYYbLvl/zLzNQtYFc+bMmX9yLldjbZKrGy4hL9iKFwD8JeuSXFfDJSxeBAxASmGT5LoZLiEvtBcDQCpxizbDZWwTAKQya1L4AAByQLgAZOba/QIFxjLDQvVv2AAAAABJRU5ErkJggg==" InformativeScreenshot="3f192cb6f8c11e66991e5ab8a0263db5.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/FVXKIFia_kKXq1N5j3MWFg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Yes ALT Y'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="abJ3gphkRUakS4cJwENgUQ" CvElementArea="775, 414, 54, 29" CvTextArea="792, 422, 23, 12" CvTextArgument="Yes" CvType="Button" DesignTimeRectangle="775, 415, 54, 27" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Yes ALT Y'" FullSelectorArgument="&lt;java name='Yes ALT Y' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Yes ALT Y' role='push button' check:text='Yes ALT Y' /&gt;" Guid="93d775d1-1bd7-4ecb-8788-eb0064c75bb5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADoAAAAfCAYAAAC22t6tAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFXSURBVFhH7ZjhbcMgEEaZiF0Yhf7qFpYYhAGyAt6J8uGejfHVxYpMe7ZPekrM+WIeB4kU9TEM8Q48oldCKdUmKjFo7pDMrzTAQTGOoyg+X6/ZAaKIH0UR3IdIgTx2RRFcsSTI5RFFcIXSIJ9HFMEVSoN8WFEEV3SEEHy0Ov1AG7cad2Y7diani4LgbdRKR+tDcW2iC9N1D7qIgrKDeK+tn3MhuGjSBDAJVS1AcOZ7fJs7QjfRSSZ11aVuaht9MeFS3Fs9L8hUs8iVuaN0EwV5oulBxhUdowWgbV3I1bl36CrKnc1JhrYmUZ/n7fhR/olo29nL57Xa9q38uSgoz2gpU4uJF11v3/X2zN/Wc66t8xy7ogDBFUqDfE4XXbqywN13FuSD5yLu21GA4IolQS67ovjPhSuWBLnsigLpsuTxqyiArETh0qFJ9ApANMMlr8ZtRMFNRIf4BWqSaARDWp3LAAAAAElFTkSuQmCC" InformativeScreenshot="d7176905431d6bc2128d1318c83e7f52.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/MvLBn-6AD0W28qcKaliySg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="410.4,90.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="410.4,86.4" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[ScreenShotImage]">
+              <ui:TakeScreenshot.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7bfcd7fa-5459-4a3e-9c04-e34ba24a20ed">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TakeScreenshot.Target>
+            </ui:TakeScreenshot>
+            <ui:SaveImage DisplayName="Save Image" FileName="[&quot;src\Results\Application_Screenshots\&quot;+ExcelRow.item(&quot;TestDataID&quot;).ToString+&quot;_&quot;+now.ToString(&quot;HH-mm-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="410.4,134.4" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[ScreenShotImage]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK ALT O'" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="2wW5gUxKykS3iMw6ix_zqg" CvElementArea="279, 359, 51, 29" CvTextArea="298, 367, 17, 12" CvTextArgument="QK" CvType="Button" DesignTimeRectangle="280, 360, 48, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'OK ALT O'" FullSelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' check:text='OK ALT O' /&gt;" Guid="0d8c6268-c507-4946-837d-e42d162d38f1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAeCAYAAABjTz27AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVFhH7ZfRDYMgEIaZiF0YhT51CxMGYQCfeMedrj30FFFbqC05tSZfInjU/8uhpsI5B2fimkJCCNbMssaDFFrA+aCcY2Y6SYlFuq5jyb1tA2+FSGbtR7hxa5rXQkeSQa4ldDQZ5C/EnU2hb8t4b0HL6AOozHTNapBSg/V+qDWgkppcqgiRjNR2nDNqChwLkYwyvVwpdYSSDoS5EFyBQYnx+j4ZpI6QUYvt03dNgrYkJEE+7ykS8VL4CAk8X27NUphtOZLj/gwVvBTCGDs6yFJ9LlWEkJLXNhKEP3ieNoV+IVWDakKhKyus1e7hWh0KEweTyhLCv7VriznyVihMHkgqSwghKc5imC1bCMFCBBdxhTKOmWOBLWgRV2ZZ48EZOJmQgwc1XbxSznOQzwAAAABJRU5ErkJggg==" InformativeScreenshot="140b8c874563adef372bf1270dac292f.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/REuUD7-VHUGzkxC5Bqp0Cg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Click 'Exit Application alt X''" sap:VirtualizedContainerService.HintSize="410.4,157.6" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="ulmzXEIsPkWjAlsI6AkWOQ" CvType="Icon" DesignTimeRectangle="21, 482, 33, 28" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'Exit Application alt X'" FullSelectorArgument="&lt;java name='Exit Application alt X' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Exit Application alt X' role='push button' check:text='Exit Application alt X' /&gt;" Guid="ceb724d0-f611-479c-a708-bd6f569f8907" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACUAAAAgCAYAAACVU7GwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD1SURBVFhH7ZdBDoIwFETlzK7ccQPuw6o3qzMqyWf+BxrTogGIb2x/x/DSnbe+T/nfuKRKcVK/eNRhJjU9KaXdeIzjC+vhpFjsug7kjM/7W7FzrnUfrZXPGd93H4YjSXGtIGboPOrKrM5NcWbhjHw5O6AU1wpihs6jrszq3BSxc651b9fRuZkdSKoliBNKIRaJ+gTR/qYQIVGXINpLEYQj6hHECW8KsUjUJ4h2UgiHnWt/AtFGCuHQc7u3IOpLIRxRbwlEXSmEI+qtgagnhXBEvS0Q7aSiTgmIYqm92ZTi353oh63g+1alyFTaE3VwUv/AJVVGyk9PaMNuXDdAAQAAAABJRU5ErkJggg==" InformativeScreenshot="87e74163b1e16f0f62e09121fe22a667.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/ti3u7pxQI0mymY4Lzyu7ZQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" ContentHash="FLnBF2iul0qJReVlW2H2vA" FilePath="C:\Program Files (x86)\Java\jre1.8.0_221\bin\jp2launcher.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZwSURBVFhHtZfZU5NXGIe/f6CXdaa96fSmHa975XTGybSdLnbaTsd2xlatjnVhWuqCKGC1LAoosgQVWWQREFBBFtk3Q8K+CLKFAElIQlZCCGELm/563qNxMHxQtfrNPBO+s7zPyVneEwTPk1nRLmEEM2QMvCUoNjkkz7RPn4zyNknhgy40dA5CpTVgZmYG8/PzcLvdbwSKRTEpNjnIRU4uTyttkRTUd6JnSIO5uTmsrKzg8ePHeNMPxaTY5CAXOcktpBQ3Bde39WF2dharq6t48uTJa7EyocHjZbdo3VrIQS5ykltIKpTLBoa1WFxc5KN8HVYX2JJ13MLqnEO03htykZPcQkK+DJOTk1haWuKje2WW3JhRJGGm+hJW2EBE23hBLnKSW7hyu46/LC8v8zV6JRbn4KqLge2iBAsj8ufly+5ZrGwSj1zkJLcQm1MNu93OR0UVL8uSywZnyT8wB23FdHUUL3OPdWC2Iw9ufTeWF93r+nggFznJLVzOqoDNZuPHhdbmZViwDMOe9hvMgR/DWR2NhfEBTBX/DUf2EbhkCbxerJ8HcpGT3EJkRimsVisWFhZeOLsbMWfox0T8tzD7fwhX803MmYf4+4T0G8z0lor28YZc5CS3cCG1GBaLhScLqtiM+Skz7Bn7YDz2Hpy1Uiy4JmGL+wrWi9sxq+8T7SMGuchJbiEkqQBms5knCKrYDFd/NUz+H8Aa8wXmZ1xwshkY/2sLnIo00fYbQS5ykls4m3AHRqORp0pKEJsxrWyAKeAj2LMP8/fJ8ggYfd+FPdcXs07HuvYbQS5yklsIjM/F+Pg4XC4Xr9iUKTblmYdgCfsE07p+OHsrYTrxPoxHt8DRcku8jwjkIie5Bf/YLOj1ejidTkxPT/8nLr2Sr7ntXhCmpxywZflg3OcdmKM+w7RFL9rHG3KRk9zC8agM6HQ6TE1N8YqNmGJMPmuje6TAXNwOODoK4DSpYT6zFZYL2+C0GJ63d7C2nvbekIuc5BZ8I29Aq9XyzORwOF5gkmG1TUBrMELe0QtZ2yOM6ExP63pqYZVnYlLTA3vs17Ao8ni5ncUxWqyob+1BWmEtapq6XojJ+7I25CS34HM+ERqNhmcmbzT6cVzPq4BfVDoupxehStGJPpWal6sNZowxLM2FUNXnoW/EwOo0aHukREfvEOrYAMJT8rE7UCoemznJLRwMvga1Wo2JiYl19A+N4nRsJvaeuYJjkam4mlMG6a37iMksQnhWFeKyipGekozQa9k4Fn8PEan3cLeyEeox/fMYR1m/tTE9kJPcwv6zUoyMjPDM5I2JJYsx9m17lSO4UylHVkk96loeora5C7VNnahq7EJF8yM0dg6gj7UZ1epgYMfL07+1ewC7A+Kev6+FnOQW9gTGYHh4mGemjRgYHoV/dAaCE3JRx+RNnX3oHlBxmjp7Ud3YgdsVchTXNUMzpuN9FGzP+Ian4ARbPu94BDnJLew6FYWhoSGYTKYNGVSNQppVguOX0nAkNBGHghPY9CXgcMh1+IQl4sC5a5zQ63l42D8EeXsP4jJLkJBbBuWwWjQmOckt/HQiAkqlkmemzTCwxFEma8X9+hZUyduRX6VAQbWCLUUXF/YOqqAzGDgtD/vQ3tMvGscDOckt/Hj0/EsN4AFb+/1nr+LslVu4w6a7lA2mtL4V+ZUKJOaVI/ZmMeRtPaJ9xSAnuYXv/gyBSqXil4M3tLGK2LpWyDsga+3GheR8/B58HbuDpNjpF42fT0bjF7bJ9gTFwzciFdklD9bFUGv168oIcpJb2OFzTnQA6UW18Lt8E5HsaHX2KqHTGzBuNKGf5QHaYGWydpQ3tLNT0c2me5CttYadGMMLMXLLGhDL9sLaMg/kJLfw5aEzfEPQzqRfKR58LtzAzpMxOBiajIvpxSyr1fGZqGVCDzVrPmuau3mbq7nlCEvKZ7v/Jsv12bjPBro2LkEucpJb+PxAgKyoso4Xrs1UlNUq2TlPuluDkMR8BMTn4I+INBwKS8bh8zc4R9ggPX8TvpHp7Iq9DWlOOYrr2zEwooWVJZ21cQlykZPcgmTfqeDIxCy+MShH00XxNiEHuchJbmH7Xj/JD4dPI6fo6Y9Tuq3oyqQ7+03iuYbJQS5ykpv/f/jpr8cl37OC0+FSFJRV8ykSS5//B4pJsclBLnJyuefZtuuohBHMkDHwlqDY5HgmF4R/ARUBpif6Ux1LAAAAAElFTkSuQmCC" InformativeScreenshot="49b8d4e1c79657bdce77270c48a16d22.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/firtyVHfeke9JQTVdwIMLA" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Jubilee Insurance Company' /&gt;" Title="Jubilee Insurance Company" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

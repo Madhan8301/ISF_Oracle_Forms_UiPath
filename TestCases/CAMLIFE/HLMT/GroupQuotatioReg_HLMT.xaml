@@ -1,0 +1,705 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GroupQuotatioReg" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ExcelRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="In_CurrentTestDataRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="CurrentTestRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="txtIdenNo" Type="InOutArgument(x:String)" />
+    <x:Property Name="Test_Start_Time" Type="InOutArgument(x:String)" />
+    <x:Property Name="Test_End_Time" Type="InOutArgument(x:String)" />
+    <x:Property Name="ExceptionScreenShotPath" Type="InOutArgument(x:String)" />
+    <x:Property Name="CurrentTestCaseRow" Type="InArgument(sd:DataRow)" />
+    <x:Property Name="ExcelRowMain" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="QuotationID" Type="InOutArgument(x:String)" />
+    <x:Property Name="ScreenShotImage" Type="InOutArgument(ui:Image)" />
+    <x:Property Name="CurrentRow" Type="InOutArgument(sd:DataRow)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>664,10513</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GroupQuotatioReg_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GroupQuotatioReg" sap:VirtualizedContainerService.HintSize="592,10448" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Jubilee Insurance Company" sap:VirtualizedContainerService.HintSize="530,10337" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" ScopeGuid="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="496,10046" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="ApplicationScreenShotPath" />
+              <Variable x:TypeArguments="x:Boolean" Name="warning" />
+              <Variable x:TypeArguments="x:Boolean" Name="Warning" />
+              <Variable x:TypeArguments="x:Boolean" Name="Warning11" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'New Business ALT N'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="a-RChhqEQEi7lOckNIjzNA" CvTextArgument="New Business" CvType="Text" DesignTimeRectangle="187, 31, 91, 24" DesignTimeScaleFactor="1" FriendlyName="'New Business ALT N'" FullSelectorArgument="&lt;java name='New Business ALT N' role='menu' /&gt;" FuzzySelectorArgument="&lt;java name='New Business ALT N' role='menu' check:text='New Business ALT N' /&gt;" Guid="bbf65f3a-e1e3-4cad-99d6-13fd52fed7b2" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF8AAAAcCAYAAAAHgGM3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIESURBVGhD7VfrbcQgDM5UneLW4PbIGtkjW5wyRtagYF7GgEN0jdwftvSpYDt+fBhOXayKmCj5grK832+rkIGSLwglXxBKviCUfEEo+YJQ8gWh5AuCJd+suz3dPwPHZjr6w26m1n+LlI8KzX8XT9X7LabId+1XhT9Lfi/Xaff1fxH3F5gg35GxHX78Wn0kyZjN7ZIEvTGr3d3JpamlJBof89ztenGoIU74rslL9z5mlr4frF3eHbnim9XrJdsG8a9sI8yR7wIF/ttm/D7wuMJ6DYzndaX3ZcUY2JZA42ZdPCRqx/tAWrHhOio/WJd66RCMemHjMzYO0+RDgg4JITGaaFQI+MVvtsP5+HFzReFpbvN1ZJr8NmbjdyNG1QsXn7FxmCbf79O0tgVTCYWU4uPf/F3S18XSfKBDzxdHXNknQSQiPy4G1wsX/8o2wi3y88RutODiQwHP1e788cTHG0B9ab6E9OQ19Qz8wYaeE+zHxbjqBYM+V7M2jFvkF52Xog+5+m8o7J1U76gT/COX0M0HhIRJwmtvC7Eicb28N8n3+1EvbHzG5vcj3CbfAzcNftV1ra9ciFF0UFgnZvFtBR9UOjwvp7tReFIhdBZUH+qD9tTsmV5G8a9sI7DkK57FJfmc9PwV89DJF4SSLwglXxBKviCUfEEsn8/HKmSw/LxeViGBl/0F/UoDFe2VIU4AAAAASUVORK5CYII=" InformativeScreenshot="6fc0fdcb3d9ed78276e2b5af58793ec1.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/-k41mlBkHUqNZFuwV-HY2w" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Jubilee Insurance Company' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Group mnemonic G'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="IfRsiHrs2k--GzkwyYMKIw" CvTextArgument="Group" CvType="Text" DesignTimeRectangle="190, 75, 165, 20" DesignTimeScaleFactor="1" FriendlyName="'Group mnemonic G'" FullSelectorArgument="&lt;java name='New Business ALT N' role='menu' /&gt;&lt;java name='Group mnemonic G' role='menu' /&gt;" FuzzySelectorArgument="&lt;java name='New Business ALT N' role='menu' /&gt;&lt;java name='Group mnemonic G' role='menu' check:text='Group mnemonic G' /&gt;" Guid="7adaba99-a16e-4dc3-b8d9-c50aeb3eb689" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKkAAAAYCAYAAACBQ93/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGCSURBVHhe7ZfRccIwEERpywW5h3ThavxDDa6AZsStolMOIYEjM7aQd2dehrNOfL1ZnIuTLMtCSJP8XK+OkpKmeZL0IhMhRwMxLfLoV9LcMiF7olKmkSNKStoAguqvukWOKCk5Hm3QVFDvJiUlLUBJSfNsk3T0d/8yZ3YI+SeIneslDYKO5tl0c+42mR1CKtDoXC0phJxF1Ifng0gqzwfzeRYQlVnKNiYKjt0XM+5MIr9mknO/R7rEBnOdpKlUOcKOFXkU22LToollIQptvy8jadzNNDjpizT1kqo0JTIiQ7Z09q24QlIrO1qcbdovNpg/06Rh1qwRD0TZ3uxGmcOMRn561SDdoNH5s++kQrEdw1k610jKJu0bxM7Vkuq74YMs9lkiGii+kwpWxCH8k2QlxZ/cPdI/9ZKCIKJNqQ0VL1yIPVMxEYiMPSvpbC6yRc/FNkl3An5SzPNSLemr5Pa3QEnPzVc0KTk3lJQ0zypJ/ZBcJGQvVktKyFFQUtI8ZUkXdwcsSDfubINsMgAAAABJRU5ErkJggg==" InformativeScreenshot="9b4bb8587e060680bf928d76145f9cc0.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/cckntjWMKkGSPPooIFqNmA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Group Quotation'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="HNRO-77J70yFZQSgI9aeow" CvTextArgument="Group Quotation Registration" CvType="Text" DesignTimeRectangle="353, 78, 269, 20" DesignTimeScaleFactor="1" FriendlyName="'Group Quotation'" FullSelectorArgument="&lt;java name='New Business ALT N' role='menu' /&gt;&lt;java name='Group mnemonic G' role='menu' /&gt;&lt;java name='Group Quotation Registration mnemonic G' role='menu item' /&gt;" FuzzySelectorArgument="&lt;java name='New Business ALT N' role='menu' /&gt;&lt;java name='Group mnemonic G' role='menu' /&gt;&lt;java name='Group Quotation Registration mnemonic G' role='menu item' check:text='Group Quotation Registration mnemonic G' /&gt;" Guid="2d855cd6-696e-473b-a13c-0d205e7e9c3d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAREAAAAYCAYAAADd7MnyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANhSURBVHhe7ZntkdwgDIZdkXuhkzi/roubuI6MC9gWvD0RC1YgvrEd7zqT1zPPzAJCCJBk+W74ejw0gQcPHjy9D+eNn9/f2iSR5/MJAAC7MUmEskpuEAAAWlARgiQCADgMkggA4BRIIgCAUyCJAABOgSQCADhFVxJZZ6WHYfCoOSv3TpZpDGxS85qV28O6THoclJ7Xui4p1zunF6tPnLXj/BpH9pcbL3HluYD70kwiNoF4Z1jXRU/joMdpSWTfxay2oBonvTibZq22QDubSK4Osh5Kuk3SFHu+kqP7Q+L4P6kmEU4YcXAaZ3k5tP2ttNrkONlwUMdv0NjJZNvOUXpyFcaopyV1xpKjmmQnbaqtm7Ev22fmcZ89h1ju1+8fTd3Ohs2+iRLgazyX9Ir769iDk5Vj5m7sWSY6ggrT9mf3F9/vB84F3Jd6Eik4tIQdSl48VQpcqfQGt3Mylo0qIMb0Zz6n7PxCsETtHvukvlhH6Xdbd36M2kysj4krEbmOGRNnktiQORe7P7+O1JHuz9/vp84F3Jd2EmlcaOwssXP2BreVk85KVZB3ViYOGEbKt9fps08i5wX6DuourWX7/VvZIe5B6vXtkg35c4l1SAK5gp1OVq5dmJfa5NeO9bfWA/djVyVi2+zYfU6wL7hDp6a3V1zamjfViUpkj30E2eCDOdVxVHdurVy/rCScjNmrtIsQ6wQJp2VDON/3W7l4DvPucwH35djfRGoBa8bidtthpJyd5x2N2kyiY96+p1l3UCLX1hFjBftsv6iM5Fjpd6fuWB+1mVy/qb4Svenc3FgtYIN5ySeGlUvs/tC5gPtSTSJE9k0o+nKXXvz+Fc5DYzI42Dndd7mYx3oZMy/Qad+I/lOovA6169/nL3uyzp3uOZbr0e31+TaT6+dkXv27hzirZCxndzRn3znE7evPBdyXZhIh7MVy6UrUL10GtpQlbEDbsXGaNjk7zoGvFI/7JJBD6jFrmGDxjlpah8ZK9rlgffUFa7z+Q0GJSsrt+i9Epc3U+0UgBuuEZxWMqa1SK1QiFNhuf9K2yv6IT5wLuC9dSeQdWCerJw6wHwQluJpmEvFvqpSc/FGQRP4OvhpgcKbgWm5TiQAA/k2QRAAAp0ASAQCcAkkEAHAKJBEAwCm+Hg/9BwQgSS4uhTOvAAAAAElFTkSuQmCC" InformativeScreenshot="19ec593548326e001d20db2a92f37d3b.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/kVWP9av48kWLbjBK8ABxHw" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Choose a Plan'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtPlanCode&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="mUUH5W-L_UCfnUEZNh4HXw" DesignTimeRectangle="279, 255, 150, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Choose a Plan'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Choose a Plan' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Choose a Plan' role='text' /&gt;" Guid="c54fc521-c40e-4d51-9ee5-d0aae5998782" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAdCAYAAABSSnV3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACwSURBVHhe7dWxCcMwFEXRzJwqW3gfz+B1VDsI8oMTYwKO/Kpz4BWCX17QrbW2bgejbLvahWZ2xT5Ce8yz2ZB9d/UOrT/u02Q2ZBVbdbULbVmW1w8L5/SWqqPD0GAEoREhNCKERoTQiBAaEUIjQmhECI0IoREhNCKERoTQiBAaEUIjQmhECI0IoREhNCJ+hlYHcFZv6DC0iq2OzP5Zqa4+QuuDUbZd7UIzu2JCs8Da+gSUXAJooG8wlQAAAABJRU5ErkJggg==" InformativeScreenshot="8e99534ccf83798526dd48caad139fa3.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/f-eUBCpe6U-9mdrd7ptAyg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="173, 255, 104, 25" FriendlyName="'Choose a Plan'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGoAAAAbCAYAAACUXxrzAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAI6SURBVGhD7VexlcMgDM1W7ONFcq37DJHOC2SIeIXMYNcEARIyEcbOO78LORW/MBLoSx8EPs3zbBWfDxWqEahQjUCFagQqVCNQoRqBCtUIVKhGoEI1gt1CjffOmsvJnn4CzKWzw2PytmkabHd245fejlMY+wZQXjFngsu9p9xH20Ndzq4eB+S+S6jxZjzB7j7670TOeMJfLxTLa3rEMcr9Q4QistdBtAP+k1CAtHE/SSjX8pCUZAekhIztsD26HcfnwE7sryFBgHHJY+us2X0xuI1tGj/PxU229c0yPfrEEcDa2Ivvm0KtxUhrujHMKasVx2ahOCnJDqDghVaY7OFeC8WN3xvsnMOySCkOzuNxizyd0AteNX9mpxjEfSlULQZ9b7w2jhGKyGTk46k0t3DH+TlsrGZHDv7EunuSiibM876xCDiWY7zD6WWPo8gz96O8wIdjw2OiFKNWK5yPOKj1ycElsSUhSna/PiYMiIUiAQVIfGkdaDU3t+Oz0yH6s7xye/ARTtRKjFqt8vUPfUy8kBd2/kKIih3HIGnq646P5LMG9EcRa0LU7MFHzrUUo1arfP3NQgHSjg8FSYuX7qSMPNrhG/yh4DvsvJ3BRW2crxeYxfXzKkljEXHT0Yks+Wd55fbgIwtVilGrVb7+LqEA/ocXAkBQh7UfXim4L/6vvfpS4fzlDrGiDdoiXzfHwNahl1fhTntHKBhbi3G4UIq/gQrVCFSoRqBCNQIVqhGoUI1AhWoEKlQTmO0Ti6mMma2Cc+YAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Company/Branch HLMT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="%[k(F9)][k(Enter)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="fm52gFiGvEGe8zlklqNxVQ" DesignTimeRectangle="279, 282, 150, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Company/Branch HLMT'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Company/ Branch' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Company/ Branch' role='text' /&gt;" Guid="c4c7a8c0-5300-43bb-ac16-658e37a8efbf" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAdCAYAAABSSnV3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACoSURBVHhe7dKxDYNAEERR1+zIXdAPNdDOxVgXrGWMEJI5JnpPmmClDf+jtbaa3T2hWWSb0F7zbDZkv119QuvHc5rMhqxiq652oS3LssIVvaXq6DA0GEFoRAiNCKERITQihEaE0IgQGhFCI0JoRAiNCKERITQihEaE0IgQGhFCI0JoRAiNiNPQ6gH+1Rs6DK1iqyezKyvV1Sa0Phjlu6tdaGZ3TGgWWFvfIGXxHwlZzgcAAAAASUVORK5CYII=" InformativeScreenshot="d6b730a641186591b5d1ffaa55bcde91.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/xrNfwHrrDEKIk4az3p7lXg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="158, 284, 119, 25" FriendlyName="'Company/Branch HLMT'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHkAAAAbCAYAAABYxiAYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAK8SURBVGhD7VjLkcMgDE1X9ONGslffU0RubiBFxC2kBufMIoyEkIXt2Mlmx3B4MzHo/5Bgcno+n7bi2KgkF4BKcgGoJBeASnIBqCQXgEpyAciS3N8bay4ne/oZYS6N7R6DKnsEdFeX56W1/ZDmOAydbc6xDgRXj/ZL9aCYlHg1qCT3N+MTae69/x6G3rZA+Nl8LbFPAvMztzHfdC8U9NrFtUdYO7uDv6LI78ZukrWkjg7MublPC5arh+/8Lx36/SS7MT128bwynOb2OnY8wDiHOM6HR2uNL0wbZVxBmrsLDq8A/x3kKejGNol8jAFski6AjUuun/ob3B5Oodh1Mkf/nelKjWTq5FDk6N+MV1ywtTXm6CfVNyEG7k+rp8SE5DiqdQUAOYFkXNCecJGcJ5n28RsC6Ud9Lo/2vF/YT68H2ndJpkUVRZbyYV/mJLvQ72e6gseWIOSSyDCbtLYxZqkPbyTwC1fKki6PH7CNZOZQWyNSJycPE0i7SwtSmyi9mwTtlT0IM/oT+yyenKx2HwNIPuQyrgX7IT4tfsTmmJX8EUu6Un7TuNYOwqdIppPr5V333NzJFg+fZfvsO8SGpKJuLl+yzUj26zI+5p/0dsQ812xLulJ+08OLJ6itvbuT+W/d3nLS3gYUHO6/MObiul4cv5+pR5LvQvyJnZUxS32ONflyTEgGxFOEpx2NiDsAjMJ37k5+leTgM5cw2sP4JvozSXMfKEe22LcE6TGSwT6/16V/L7Mz5sn+zKHS8uVQSQb4P0PAEAQGxt0rkP8Zsu51/SLJ4qWJ3QbomC+SyxQ5l7QnBmINEwjl+ESSINvoG+F857oUdffGDHWUr+tRdl2+iCzJf4lckd4NJFkbgUdGMSSTj8xpPzKKIJnuRzZiS8K/ILnis6gkF4BKcgGoJBeASnIBqCQXgEry4fG0vyqs0kYGmnAQAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,330.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Find'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="387.2,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_9" Text="[&quot;%&quot;+ExcelRow(&quot;txtcompany&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+                    <uix:NTypeInto.Target>
+                      <uix:TargetAnchorable ContentHash="DD0_8IM1F0az1HCBa-Q4NQ" DesignTimeRectangle="103, 168, 503, 21" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'%'" FullSelectorArgument="&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name=' Find' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name=' Find' role='text' /&gt;" Guid="e6912b61-2802-4a67-9802-72b3213bfe98" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAfsAAAAZCAYAAAA2cIfvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFTSURBVHhe7dqxcYMwGIBRBmIUbUKXKitQeQi2cAMDeCfFck4cICd2qiDd++/e2WBRfxbQLcsSAYB2iT0ANG4X+8/rFQCo3LbtyRr79OPH5QIAVO4Y/CL2t9tttwAAqEfqeWp5mnyuiH0+BgDqJPYA0DixB4DGiT0ANK6I/dB3MYzzLvbzPMV0vuvuwrgunoZ+dwwAnM97sR/DI+rf0e/jMM3372MMXYjjPK8XAwDnU8Q+vBn7MXSxH6b1QgDgnIrY993r2/jzNMS+H+JkVw8Ap1fEPu3Yj7E/ymvS5+MPgPADwGn9Ofbrrn6zu8/XHNcCAP+vfGb/5DZ+tntBT+wBoArlM/snL+hl+UW9fOw2PgCcXxH7/OW3Z/YAQD3EHgAaJ/YA0LiXsU8L8jkAoC6p4z/GPknBz4sAgDrleRr7xBhjjDH1z7btRewBgLaIPQA0bYlfYeMwaRBdvPoAAAAASUVORK5CYII=" InformativeScreenshot="c24ecdcd7b813c142afcf29f266e6e38.png" IsResponsive="True" Reference="_4BeS_pdmkqit54Zi6Lc3g/FmHBMQnYEkyplPJGaju8Fg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="83, 171, 20, 15" ElementType="Text" FriendlyName="'Find'" FullSelectorArgument="&lt;java name=' JHLKELCQA - INDIVIDUAL LIFE PROPOSAL (NB_FRM_01) (Version : 1.42)' role='internal frame' /&gt;&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name='Find' role='label' /&gt;" FuzzySelectorArgument="&lt;java name=' JHLKELCQA - INDIVIDUAL LIFE PROPOSAL (NB_FRM_01) (Version : 1.42)' role='internal frame' /&gt;&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name='Find' role='label' check:text='Find' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABgAAAATCAYAAACKsM07AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACpSURBVEhL7ZHNDcMwCIUZiFHYhFtPWcGn7FC28IVs9uqfOEpaua2i5NAqhydbD8xngKZpwhkaYsRtHHEBuvpDgJuCiUArsVr1WWHuL0We5W5QJkjwDuDLQj3tAjT/nk8RSOtQwpJjytXjFH8LaI9LcoVtACQI2fOQQPN97c819nfQoGUUDDUvv8+7avlBfg1Q4pvRHQzIOcuSKXXTW/LRugAfdToga4gRDxnAQ++VkhlgAAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NTypeInto.Target>
+                  </uix:NTypeInto>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Find ALT F'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="TCQEOyu2h0qthqcVxfGAAQ" CvElementArea="203, 360, 40, 27" CvTextArea="212, 367, 23, 12" CvTextArgument="Find" CvType="Button" DesignTimeRectangle="204, 360, 40, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'Find ALT F'" FullSelectorArgument="&lt;java name=' JHLKELCQA - INDIVIDUAL LIFE PROPOSAL (NB_FRM_01) (Version : 1.42)' role='internal frame' /&gt;&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name='Find ALT F' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name=' JHLKELCQA - INDIVIDUAL LIFE PROPOSAL (NB_FRM_01) (Version : 1.42)' role='internal frame' /&gt;&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name='Find ALT F' role='push button' check:text='Find ALT F' /&gt;" Guid="e34b7fdc-6963-4228-b6ad-0c245c497ca4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACwAAAAeCAYAAABXNvynAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVFhH7dZdjoIwFIbhrqh76U7sXM0uTLoO7QK84r7s6chXPATxgNWUM52EJm9ioJRHfoym6zr6Tx3gvSsCaw3p3Ms2wTz6vleJh2ThVsEY0qIaYUgmJIIxpIU0w5BszYJ/b7cXF3oBt4DlJPQBrtlbcAk2RU/WGDKzrI/jdusppiQeNy+lSN4acuH93J/zuQK4ELZWE2Defr2cyDpHju+AC9Oc6O24zQ77VcGMyScf8U9g4yhgWwoD/PE5Hzf/3NIV5i+Rb70lH1O+unjWeX5wB1juW3De//SoNA7GnOmlM8PVrvHSoRK0Vkss+go8/UI8kubUqBpYqyIwagEtYZEIxp8OaRHNPgKjv0SvYdEqGAGtCQd0C4s2wRwvtHfSuZcVgVvqAO9bR3eAV6dSY8py3gAAAABJRU5ErkJggg==" InformativeScreenshot="2c55bf47bee0f72503fd9b4877e0823e.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/fYXpLFAJIEqFfw2XGZKPvA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='Jubilee Insurance Company' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target CvElementArea="279, 359, 51, 29" CvTextArea="298, 367, 17, 12" CvTextArgument="QK" CvType="Button" DesignTimeRectangle="280, 360, 48, 26" ElementType="Button" FriendlyName="'OK ALT O'" FullSelectorArgument="&lt;java name=' JHLKELCQA - INDIVIDUAL LIFE PROPOSAL (NB_FRM_01) (Version : 1.42)' role='internal frame' /&gt;&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name=' JHLKELCQA - INDIVIDUAL LIFE PROPOSAL (NB_FRM_01) (Version : 1.42)' role='internal frame' /&gt;&lt;java name='Proposer identification' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' check:text='OK ALT O' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAeCAYAAABjTz27AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVFhH7ZfRDYMgEIaZiF0YhT51CxMGYQCfeMedrj30FFFbqC05tSZfInjU/8uhpsI5B2fimkJCCNbMssaDFFrA+aCcY2Y6SYlFuq5jyb1tA2+FSGbtR7hxa5rXQkeSQa4ldDQZ5C/EnU2hb8t4b0HL6AOozHTNapBSg/V+qDWgkppcqgiRjNR2nDNqChwLkYwyvVwpdYSSDoS5EFyBQYnx+j4ZpI6QUYvt03dNgrYkJEE+7ykS8VL4CAk8X27NUphtOZLj/gwVvBTCGDs6yFJ9LlWEkJLXNhKEP3ieNoV+IVWDakKhKyus1e7hWh0KEweTyhLCv7VriznyVihMHkgqSwghKc5imC1bCMFCBBdxhTKOmWOBLWgRV2ZZ48EZOJmQgwc1XbxSznOQzwAAAABJRU5ErkJggg==" SearchSteps="Selector, FuzzySelector, Image, CV" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uix:NSelectItem DisplayName="Select Item 'Confirm No'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="Yes" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="3">
+                  <x:String>Yes</x:String>
+                  <x:String>No</x:String>
+                  <x:String xml:space="preserve"> </x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable ContentHash="NFedgRXVo0ibzw4puvlh8w" DesignTimeRectangle="770, 229, 175, 25" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Confirm No'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Confirm' role='combo box' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Confirm' role='combo box' /&gt;" Guid="7cd75dd3-b278-4405-a940-5db9c052744e" ImageBase64="" InformativeScreenshot="1b0deff2fde4ee2168b0a68ba2281497.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/OmD8Ra98cEyG0ggfzXvE4g" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="699, 228, 69, 26" FriendlyName="'Confirm No'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEMAAAAZCAYAAABq35PiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFJSURBVFhH7ZZLjoMwDEA51fg+OQ2+TCPNSfBdwtrNP24mQxGlUkW9eAsg2M6THZjWdWUloTIEKkOgMgQqQ6AyBCpDoDIEL8kgaxhg4mlKABi25IZrj0Do4+fYP/MvY8zlc7jzckgOyyCEWKSxFK+do1wsMJ4gxDnLJogAZPKbb/E/TEYt1Njh8zPoZYzWnM0xGX48UldsF+nIMprUQWmMsI5R26wRayDGbF1QAJ6X5aEz2vuQR9XwbZnTWBnsYvq1NV7K0dcaOCSjjcj/MmqxoXgvIIoZbSaPVd8Jf68fx6R/P+YkzGdMyVmugwBK74gYfc3vk5G7BzCdKf293Zvd+TzGL5vP4/ssRqmr8LYxGQm7poySZOMA/ZrOCDz7tNZCQuKtM+MKMgLxpysky/Q/Xfu+JheRcTVUhkBlCFSGQGUIVIZAZVRWvgP782wJ/PgqtAAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Par.'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtEmpPart&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="9PCqucBr8EmbBNnOBn-R1w" DesignTimeRectangle="902, 309, 43, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Par.'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Par. EMP %' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Par. EMP %' role='text' /&gt;" Guid="81c9703d-3e05-447b-80a5-d5a40732d7fa" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAdCAYAAAA6lTUKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAB/SURBVFhH7dIxDoAgEERRz2zlLbgPZ+A6W6/ZYg0KxHJGMz+ZSoqHYTMz/+r+gz9qpV5vjV34+LiXQr3nBQZ8a80ZC1/alnjmhEclPCrhUQmPSnhUwqMSHpXwqIRH9YrPA2yFa4nPC+QhxmVTfIy93jr8eeb11tjw5pl3v4D5CQm79vs19KTjAAAAAElFTkSuQmCC" InformativeScreenshot="5fab9403f4b1df5b9511ec54541506d3.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/XrlGBoFfzUyNSF8aM-JjWA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="817, 311, 85, 22" FriendlyName="'Par.'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFcAAAAYCAYAAACPxmHVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHpSURBVGhD7ZbduYMgDIbdin2Y4qzANNx3C3bBa05+iNJUrbSkV1x8j4ohIW8guqzrWqbG6+/xKBOukSZcQ024hppwDTXhGmrCNdRtuDnH4pelLFrOl5Dy4ZwRyikUdxR3cRT36b0LJeV9LdHv9j6C7Qc50ByHdq74kOpYKgHG0Ke2b9UPt0kgJ1ksJ6rnjNAGz8fr92odGuQT3I4cUnBsHz3Y+BJhHsfke23f6iu4KApeF9/aj9JtuM7RVdYh4w7Gr+CirnKg3a/g4piru/hKw+FiUnyMqpojt/sAEGTzvvq34XrPvqsdrwtiN+v7BC69e4KLPu6d1EFtoR4XsYEE0UbP2Z472sgGT0t8NvC5x+JauCeiTXwDV+fwEh/nND2XYJ8UWsvkg5ZiLAF2Eu9OlILfJPdO93cuFJRAQuEgPsbBo9vuyp4cjrR/yBIUkv06f57L123hxWarMiR7trON4Mp922cP4XbEb5WxNeBcioNFrNeTwoyFS32JE6FnNcccrvgncUFHwpUPGeeJ/tmf5KtlAldASGJXO1eOmti0/uh9B1x83v5ta4xRcDlOzYPuf7xzUdKLOEHoZfTMC/gK7oEImIIrMOVXaRRc8tMUeGjPnerXhGuoCddQE66hJlxDTbjGmnDNtJZ/mNvBLuP+mR8AAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Total Employees'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_4" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtTotalEmp&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="na9YATgTEUms9T7fvutYew" DesignTimeRectangle="279, 334, 150, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Total Employees'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Total Employees' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Total Employees' role='text' /&gt;" Guid="aa1b7ae2-0e4b-40f0-bb62-8e5237238646" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAdCAYAAABSSnV3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAC7SURBVHhe7dZBCoMwFEXRrrmj7sL9dA1ux7EllF+sqRQ0vNE58EZmeIm5Lcuy1h7P5zrPs9nllWrrK7Q2GGXbVXejmY3Ytqu2T2jt432azIZsH1sX2vb/Cme0lqqjw9BgBKERITQihEaE0IgQGhFCI0JoRAiNCKERITQihEaE0IgQGhFCI0JoRAiNCKERITQi/oZWB+Cs1tBhaBVbHTK7svIztDYYZdtVd6OZjdi+q+6NZjZiFdu7q2l9AfQ6nf4AcpM1AAAAAElFTkSuQmCC" InformativeScreenshot="ce8c1a5e27e3edb015044b38eb058c63.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/vgFhswip20aajcQicnOI1g" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="154, 332, 122, 27" FriendlyName="'Total Employees'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHwAAAAdCAYAAABotghBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJwSURBVGhD7ZjBmYQgDEbtin7ohmqohV70zCZAICIOOo7OfEsO/4FJgCQvCLvTsixeNI4E+GAS4INJgA8mAT6YBPhgEuCDSYAPJgE+mAT4YBLgg+kycKsnP0070rY554rm2XmjcH3t7Txv7c541YplUt64rf9V9eL5NX3shOfElfHuZOLOGq/NseY4DPyGZmtJgJ8EfhaQAL+mR4DPznqjFRQFCzN5BT4WPq+lWKRYNISm+e9K58/xVeDFblhMymtr2Z44pv3g9xSDXvnvx9PPl/laHXzyejhXsbkQJ6/nK3tYn+/bqMHtwHPBMElMOgScxuBXA8r+MMZ1SsHjuoeB16L52U7x0Bghurgfjy/Hj1DQTvvHN0EdTy9fZyIQAhzfQLRWyZXmrnN/bedr1/uQ7geeOlgZ1/ytBk5ycOKM1nA6wIb2XNCDwLsnvGqwXNQdgCwvfio3/ify3ezdmBvBpYbo2AnyBF8AbE7OgXQ78Fan7RUgrgNFCAWEoOEh56iLfxB4iL/y7+bL/VMsBDADa4if2pZi81HtkthVSPq5E042KlgPCK1JehJ4LHLl38m3jKGhw31b/lxszeXq2Ul4SPJdXtXh+3c42SvgNC5dTf5fAg5a3+HteHr5rvZk+9axhLl7a+/YY63S5z/lWTfH7cCDjXccBpECJrvNtlikMsb14LPETkKdJN8HlYE2FE7k2yec4kAbO5WNeHr5ougfVjWQ8BAL6yXBvnzuK3uIhe9bvfBRHwP+X1U3RMvnHRFwurqekgDv6A7gec2dr9SdEuAdfRp4fqPgo+3h040S4INJgA8mAT6YBPhgEuBDafF/R0pMwQHDpiUAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'No.'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_5" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtNoParticipant&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="viV-Fr1-6ECldX23l5PLfA" DesignTimeRectangle="657, 334, 78, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'No.'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='No. Of Employees Participating' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='No. Of Employees Participating' role='text' /&gt;" Guid="e09cdeb2-77d4-49f8-a6e0-e5711553c267" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAdCAYAAAA5IjsiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACsSURBVGhD7dRBCoMwFEXRrLmj7sL9uIZsJ+OUB/6SalIjPEfeC2+kIBw+plJKjb3Xtb6WhV1Y9AOp0fXkdrhINrfWTftC6mHvdFl/e8wDZM55O1gaJatwGkLSXECaAtIUkKaANAWkKSBNAWkKSFNAmgLSFJCmgDQFpCkgTQFpCkhTQJoC0tQpZLxA42Q0hAzMeIn9X9SF1Gi+1i3pCu9Y+5EnLOm/eMeehVnqB+3aFfTF3qY9AAAAAElFTkSuQmCC" InformativeScreenshot="a70ca7fa52f384266f2c05c877a0c6d0.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/KlsxycCPzkyEaaeQbt1e6w" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                      <uix:Target DesignTimeRectangle="441, 336, 40, 21" FriendlyName="'No.'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACcAAAAVCAYAAADFEfeTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADqSURBVEhL7ZTJDcQgDEXpin7oxtW4FnoxZw8mLEPkQSFBoxw4PClgAs8/iwkh8FvZcnfZcneZliNCdsawMY6RKM95BtvPreCBXMRhnlsvR+geyhnL4Gm5XD1DK47o5SIxPU2OPDI4W9dZC4yxkfN+Gik1uU8rjqhyUQqdHCzp9XKtgTiWZEV0IlkPuSmtOOJbjjywTdfQy+XOLfh2nzL3iyVyMj7SKxxyZXOHLaUZuSWPNY1Leok1ydUztOKIs5zQ0styZY2MlXfuytedmtEKIzS5ll47bPS1Xv31TMv9ky13ly13lxfLBf4AEdZxrUtaRmQAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                      <uix:Target DesignTimeRectangle="160, 333, 116, 26" FriendlyName="'No.'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHYAAAAcCAYAAAC0yEstAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJqSURBVGhD7ZjBlcQgCIbTlf3YjdVYi70kZxdUlBgdk51MZp6Pw39wQAU+jO4u27Z50XwSsJNKwE4qATupBOykErCTSsBOKgE7qQTspBKwk+o0WKsXvywdaduc847W1XmjcH3t7boe7c541YplUd64o/+7GsXza7p8YnOCynh3MUFnjdfmXBOcBvuBpmpJwHZ0FYSAfU+3gl2d9UYrSB4LsHgFPhY+i6UopFgchKP570rnz+i7YIvdsJiU19ayPXFM+8HvKQa98+/HM86X+VodfPJ6OFexuRAnr+cre1if79uowW1gc2EwGUwuBJbG4FeDyP4wxnVKYeO6p8HWovnZTvHQGGG5uB+PL8ePxUc77R/v7DqeUb7OxMITyPhGobVKrjR3n/trO1+73od0H9jUkcq45m81WJKDE2S0hm4HG9pz4U6CHZ7YqpFy8TqgWF78lB38L+R72LsxNwJK4Ad2grnAicYm5BxIt4FtdU4v0bgOJBsKBcHBg8pRV/4g2BB/5T/Ml/unWAhUBtMQP4UtxSaj2iWxK4z0tRNLNirMqPC0JulJsLGYlf8g3zKGxg33YfkzrDWXa2Qn4WHId21Vh+fuWLJXYGlcupT8vwQWtL9j2/GM8t3tyfatYwlze2t37LFW6bOd8qyb4DawwcY7CDdLgZHdZlssRhnjevA5YZ1dJ8P3QWVwDYUT9u8TS3GgjZ2yRjyjfFH0j5268OFBFNZLgn353Ff2EAvft3pRoy6DnVU1+JbPf0Rg6cp5SgI26RNg85qdr84nJWCT7gab3xD4eHr4tKIE7KQSsJNKwE4qATupBOyU2vwfsW3jPqtKShAAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Emp.'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_6" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtEmpRet&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="eQHMAmf04UqurnyQaLi1IA" DesignTimeRectangle="902, 334, 43, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Emp.'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Emp. Retirement Age' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Emp. Retirement Age' role='text' /&gt;" Guid="d218c7a0-945d-458a-afeb-734199ab9a6d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAC8AAAAdCAYAAAA6lTUKAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACLSURBVFhH7dIxDoAgEERRzmzlLbgPZ+A61Jg1WbOIxHKGZH4ylRQPQ2qtdd9ZSq+10s5z74C3sRet059nXrTaHrx9PHKm3vsCEz6+LabM57YlnjnhUQmPSnhUwqMSHpXwqIRHJTwq4VH94v0AW+Za4v0Cfohx3ifexl60JvvbuyzCb7y98102XqD1CxkV4mR8dYweAAAAAElFTkSuQmCC" InformativeScreenshot="a7809fbca4505e0856a8143ec8b80477.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/UGBJ6Dua2UWBmrf7nlBbBQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="749, 334, 150, 26" FriendlyName="'Emp.'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJgAAAAcCAYAAACd43bvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALbSURBVHhe7ZhNdusgDIWzK/bDEt6oW2CUnTzPu4qyljpjHn8yAoMFfqFJfTT4Tk+MEVfiRpDeHo+HYZhZsMGYqbDBmKmwwZipsMGYqbDBmKmwwZipsMGYqbDBmKmcNtiqlRG3m7ntEEbptTpnJuu6GFnTI+RpPeuqjRIujjTL+vM5zSTlZpFL9Z1n8P8GmyhuhM1gSM/2TCijOw2iF2WkCjF+q8FwDi3yBjEvv0sbzLFIV8C+rvpuOZ2hNwethK+LlOHvrFNnmsHSuDLKJxE2Wi7WCNCa/eeQWOo2Miadj1P0GmzVi+1KEP9mhNXnult2ZHik+fv9lXWwpFEYgZ83Yob1xupwpNGPoTrl8eo51DrT9p7r7FGfUDp/B3S7MWn3BOUbxtsaMc+/g8XjKI1bUXZz02dXDB0KhTcJCmcJ41Cszu5TMZgrQtiMqGnbHBU1FeOgMcYoj8ikERm2N+ZoHVrxCg34/VoONfA7mdnsfD9exlykXc9+7tSI1/qBDgabVYhubR5ONCbW08W2+QXZtz/Gw99WOCr8Zu0092vsj0nUgYpHzSf2xRHipbruunyhYVQjPHP8CoPhRFps8+N6UESB9MGzGv6IOWGw8ZjHdSDjUXWk9qV43z8r6gwawICjGmEtx/U62M4c6JtIGPaMwcZjEnWg4lHze/elBsQsNIxqxLyfwSz5HQzG88+79WA+0pOKWaxhNfi7Q0vDprkxHnPI1m3FPFsHSiM1v7Ev0H2wOVKM+jGso6F6NeL1nn/Jt5w5GtJ4/utouxccJJHFLwob7hfpub+Q+jgRu54rUnof1ra/Ir9avyKTwaiYo3Ug43XMxzng3NK7+7tSaTzXpWB/3T0W/xDx40QdgdMGezatzWNeD/XlPoINxuzYXS3g3xCNY/cINhhTRat0RPpj0u7LaPdyvI3BmGvCBmOmwgZjpsIGY6bycoN9fH4yF+alBnMC/tzvzGW5m3+jpRjtwmWW1AAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Delay_1" />
+            <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="433.6,86.4" sap2010:WorkflowViewState.IdRef="TakeScreenshot_1" Screenshot="[ScreenShotImage]">
+              <ui:TakeScreenshot.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7bfcd7fa-5459-4a3e-9c04-e34ba24a20ed">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TakeScreenshot.Target>
+            </ui:TakeScreenshot>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[ApplicationScreenShotPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["src\Results\Application_Screenshots\"+CurrentRow.item("TestDataID").ToString+"_"+now.ToString("HH-mm-ss")+".png"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:SaveImage DisplayName="Save Image" FileName="[&quot;src\Results\Application_Screenshots\&quot;+CurrentRow.item(&quot;TestDataID&quot;).ToString+&quot;_&quot;+now.ToString(&quot;HH-mm-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[ScreenShotImage]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Policy'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_7" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="fhLdOLPR_0ixDDfGl5yMAA" CvElementArea="167, 77, 101, 23" CvTextArea="203, 82, 29, 12" CvTextArgument="Policy" CvType="Button" DesignTimeRectangle="165, 76, 104, 21" DesignTimeScaleFactor="1" ElementType="TabPage" FriendlyName="'Policy'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' check:text='Policy' /&gt;" Guid="92e5f554-3207-4fd1-8ade-308f5ecae466" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGwAAAAZCAYAAADUicu/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF+SURBVGhD7ZbLccMgEECpiGOq8IVOQk7uwhnqiCnAJRi1o/PGi7QYYaTYyUgCsjvzRvwPelpW4u1wAKYeWFhliL7vYQmObSPnIEYcL5fsBEXXdcyGYMw5wfFFYbkDmfX5UVi6ICdLCOHh9jptfMZ8nE4TJ+TpaWHMtrCwymBhlcHCKqNqYc5qkGORHpCgrcuuRfx6qeH89e6f1s2vLZX6hUUv3hkFYkFEur5G2hIW9a2WIfOktpP5OMP8WMhQBeY2ZtR9j9+HH4Iyob8nTWaYFzK+fOcMqPGqTIWdr59hDvd7yTcxg0Tab0FLAcqUkZVN1rA0IzBj8IU/CJupZbGk9KPYm6YyLIz/URhCZ2DWxdfj3rQpDMd/cSXSlYrn0T4ph3Pi8/ekSWFI/NNB9ScV5sV4uXSlTuVQTaN+CVQtbE2GOnbPvlJgYRn81YgZV1h2IU8L+y+yaiCW9rIwqhPcXqeNz5TYy4MwitxGZj8ogrCxn13MlAOFyE0ypdLBN7aB9u5i8d4eAAAAAElFTkSuQmCC" InformativeScreenshot="ae71967ed1de2a2c92d0dfa1e0222828.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/6nZoS3YLbUy_b1H_3xGhmA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Corres_Camlife'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_10" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtLang&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="Wpvm9LASPkeRjRXYClUvag" DesignTimeRectangle="722, 172, 78, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Corres_Camlife'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Corres. Lang.' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Corres. Lang.' role='text' /&gt;" Guid="9a2c42aa-3b2d-4fa6-bc7b-d11818d0d211" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAdCAYAAAA5IjsiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACVSURBVGhD7dCxDYAwDAVRZqZiC/ZhhqyTOiiFERAFIrjyTvqFJVdvyjkX939CQrtALtvmBnd3OyDrMa+rG1xghlsDmVIq9ly1CqcupI0lJJSQUEJCCQklJJSQUEJCCQklJJSQUEJCCQklJJSQUEJCCQklJJSQUK+Q8WD9qlEXMjDjyT0vCrcLZJ2Nd3ZrIN23CYkslx0Z33Am4unv8gAAAABJRU5ErkJggg==" InformativeScreenshot="33c2ec35156d217f7abd1cc365ec70bb.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/8qUdnXamL0qRmuyo223p_g" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="625, 172, 54, 23" FriendlyName="'Corres_Camlife'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADkAAAAYCAYAAABA6FUWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFWSURBVFhH7ZbNlYQgDMftin5oxL1ytwhPQwNTxNCCLSyes4TIx7oZZOa577ksh//BCCG/JESHdV2hdXXIVtQhW1GHbEUdkpN5SBDTAMMHSUwS9GLZtVfRS5DmLjyYfBj/bK0BhcCjAHVh0GpIazXI0QHNmn1/ZdVDujalKpYrZhcNaqaKUzur2M4xUZOglh8l3D5vP2zaWvLjbNHPrMA4O/lxHZSfcZD4asjUqs8hIwQG6sAo0Czw+D61d9G2JQj9hGcEzWOpietcyK3a4k53dm/Lg09VYWyMH3/+logQC1Yf50PY90yntiuXiHcgIwQj9O33ZBN+cBO+NPhOHTy/WUlOJr//hbiqIVGpUvwnJAZ8dCePIDOb9xPPIT9569pFgXBrKYnf14W4X4JE+Z8BDACzh9ne/QzUTdcyZPCzb8nkZz9dae9pkH9RHbIVdchW9A8gV/gCd8ZwqAoBmRUAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Freq_grp_Camlife'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_11" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtFreq&quot;).ToString + &quot;[k(Tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="n0776DjW9EC6MyB0ItvZHA" DesignTimeRectangle="302, 202, 112, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Freq_grp_Camlife'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Frequency' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Frequency' role='text' /&gt;" Guid="cfbc88cb-7970-4cda-bb37-b5467e109a36" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHQAAAAdCAYAAAB7YUi1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACZSURBVGhD7dG7DYAwDAZhZqZii+yTGbJO6qAURjyEaPHpTvoLS+6+pfc+HGeCwnYB3Wp1yXb3O0DnsZbiki1Qw+8B2loblqNpFl6voJYrQWEJCktQWILCEhSWoLAEhSUoLEFhCQpLUFiCwhIUlqCwBIUlKCxBYQkK6xM0Huz/TatX0ECNJ5djUfhdQOcsX2e/B6jLPUFR62MHQt5QoSXkru8AAAAASUVORK5CYII=" InformativeScreenshot="4d6e976a170b12e8d95ce83e622f4f4c.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/ANN-NYNRcUWF80h4SBZq5g" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="220, 202, 81, 25" FriendlyName="'Freq_grp_Camlife'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFMAAAAbCAYAAAAAubMBAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAG5SURBVGhD7ZXNlYQgDMftin5oxL16nyK80cAUMbZgDXjOEgRBZAD3hf14m8P/+SAkJD8wDNu2AYtGDJNQDJNQDJNQDJNQDJNQDJNQDJNQDJNQt2BqrUCOAwwfV8mXzvr8J30N5mOCRTO8VAyTUKQwg12AeJjvKEGZdXpVMJk53xLEfPbX6wTCtQ8xS5Cxb7Kn1ouJFey7//v4wV/CNLs1ozi1Jdzf7nn4q/w+L2nt71paH5gm2WlNi5lAmTks/AwnGXuwjTCb47ucrvHc2ADE8eKAiecCy3OH7+GpOcSJ6/aieYDSxNzY+kTJ+Tg2SV9cYi/B2vdI7LX4jf6523YcrL2p19pSdfrNg92fbk5YQHr6d2HW4rf6Z2HGax3Y+NBSdYeZuzmxetzMWK3+OZjWH+3mlkvst4VfHNUfZjRne1oFlu9ZwZ6sL/TUlvhV++VwnR1zcmvimmN1h2nn8VHAAjAhm5QpJDrh82vuXlZXrLWbAov2QvwaTL9/+prH+duHB+cLvzjqFszvUK7Yn5aH+a4VeDHMio6b3ZAPwyzI90/7AFVuJerXwfzLYpiEYpiEYpiEYphk2uAT+aPEFopC4j8AAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Pymt_camlife'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_12" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtPaymtd&quot;).ToString + &quot;[k(Tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="Sz4uMZaMn0a7ZtEDclLrQg" DesignTimeRectangle="722, 202, 78, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Pymt_camlife'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Pymt. Method' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Pymt. Method' role='text' /&gt;" Guid="102aedf5-f71e-4ab6-addb-11d7eb798562" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAdCAYAAAA5IjsiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACdSURBVGhD7dAxDsIwEAXRnJmKW+Q+OYOv43rRFgsEJ8GCKedLr7C0bmbpvYf+Z0jILuR92zTps9szZD5u66pJFbO6DSFba7FE6EK2yk6505BHHzUyJMSQEENCDAkxJMSQEENCDAkxJMSQEENCDAkxJMSQEENCDAkxJMSQkK8h8+Doo16y0WnIillHularbruQyc3vvdsQUr8xJKLHA2gaZ9r2IZjPAAAAAElFTkSuQmCC" InformativeScreenshot="785b2dbadb33ad662ce3eba05b1c398a.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/tR3e396_DESBe3E1HmWKCQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="621, 201, 102, 25" FriendlyName="'Pymt_camlife'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGgAAAAbCAYAAACQqsrOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJySURBVGhD7VcxdsMgDM2tfJ76CJ26pStTlhwiU7z35Q61j9BcoWSmCBAImSR2+uzQPg3/JQiQvvRBtjeXy8UI6oUIVDlEoIrx9vEhAtUKEOd1txOBaoUIVDlEoMohAlUOEahyiECV42GBtO5Mu92YzTvDvjXqrIt71oQ+K9Mgv70yg06cukPi2/bzucbcmd9HofVg1N7627amY/5+LxAhqc/Btm0WEWnolWlPXXGOIxOI8OEHa6pANPafFQgwnJqHT+YtxIIfZgq0b9wv8kF7Y+1TefLY/0Kgl89+FFT3bSxKSloZdfB74KS3vfUL++LYrsUEwObs40Q4kv/W8wzFdfzsfsUOEtx+FUQDNJYX5FWKffw+htwtP8Y1xbf+MC/wZ+vUka4S+cGcjeX8LC1QanE+EL9NrveHdhMJwtpsDIkO3j8hnQo+8wbZ9T4u+AnFhmIRbjQXzyXPjceO6zEXVos0j7mB+GFM53G9PbixFnZM81j0JYEmNiJ1LemYZH7tfyOQvzW2mHA7ra05DdnhwZsNdtwf99DDM5VrwR+18flVW1y+hgQOSUZSKwqE/+lzhwqE/0twAs7kSn1HPkQUPv80gQCOGLQt6MfhRDr7mgKhbyh6oYilE3/Nlxvf41rwR218/rkC0eKQtbOTxvm4/npSbp75j98+wX8mEIntnhl3Y0/kCuOJzyDHrZDL4gIBsDjZiZopkPfjiwq249f4LZGC+0dBkMOozcCLAfgD/wD7LIXior88Nr7FXefqRHnmW9wcoEC0JwumYXGBsuteOOmC21hUoNRb8484wXSs0uIEj0MEqhwi0B8AiCQCVY2L+QFqQUGFMAgTMgAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Currency_grp_Camlife'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_13" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtCurrency1&quot;).ToString + &quot;[k(Tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="2Zm5iDE8rUO8h65ZnHr-uQ" DesignTimeRectangle="302, 235, 112, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Currency_grp_Camlife'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Currency' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Currency' role='text' /&gt;" Guid="21ea9583-4edf-4919-814f-2beb03e0f36f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHQAAAAdCAYAAAB7YUi1AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACZSURBVGhD7dG7DYAwDAZhZqZii+yTGbJO6qAURjyEaPHpTvoLS+6+pfc+HGeCwnYB3Wp1yXb3O0DnsZbiki1Qw+8B2loblqNpFl6voJYrQWEJCktQWILCEhSWoLAEhSUoLEFhCQpLUFiCwhIUlqCwBIUlKCxBYQkK6xM0Huz/TatX0ECNJ5djUfhdQOcsX2e/B6jLPUFR62MHQt5QoSXkru8AAAAASUVORK5CYII=" InformativeScreenshot="167eaf7c27d1e5d53bfbe5ef2a152b4e.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/ueWJ8NnkSk2K5rLzxOLcIA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="231, 236, 71, 26" FriendlyName="'Currency_grp_Camlife'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEkAAAAcCAYAAAAtMJKYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAG9SURBVGhD7ZY9soMgEIBzK+7DKV6X19p7CKvYZ3KIeAWv8LDmsQvoishPxpnM6BZfISCrH7urt2maNJOGJWX4eT5ZUg6WVABLKoAlFcCSCmBJBXwkaXhLLdqbvv1aRCt1P6ro2jNQLWl4CRQj3wNeKzXoBoTdhW5OKqpKklK9lncjpOuj82elTpIpM5tF+xkzi2wbPShFMs2UJF77eWFL1ow//h6bMVw79uZem7lY1p3dcx1H6qZza0w202dTY6MlbQvmcMPnwXWZ96qStJTaAZJIeSbHzD7Q70DYet/1Pdu47tqIgWvooyjqNWzeo++Wffx7UL4nyc3H7sEx8lJ+b4y/KyWIk8gOyDDhBMZih3yx3NKS/IHEgPi5OKkDXa11wuhhhBzeuI+SFMskSjZO5kBx3mSlhH6WKDWgShKwnFD8F2DzsD61ayWRMexJGdnZ+UD6PG/GaNwY1ZIA/Jn0ASBw8DMJD+Tn4YuEX5hKSTgOzRrudXHgS+bj5CTZ+7dfN7o/NmwYT5Qa8JGks+AlpXoscFlJcyaSzNvjkpJ8f8LGncki4NLlVgpLKoAlFcKSCmBJBbCkAlhSlkn/A+AkIJoPEpMYAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Term_grp_Camlife'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_14" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtTerm&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="tMtbJ05yA0yiHhUB3qpWeg" DesignTimeRectangle="722, 235, 78, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Term_grp_Camlife'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Term' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Term' role='text' /&gt;" Guid="2e35b665-a8d5-491b-aad2-9d03c2aceed5" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFIAAAAdCAYAAAA5IjsiAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACUSURBVGhD7dCxDYQwEAXRq5nouqAfanA7jo02WMQdGCyYcEb60W70PrXW5t5PSGg/kN9lcYPbu8U2yDhO8+wG9495gCylNLsurNKpC2ljCQklJJSQUEJCCQklJJSQUEJCCQklJJSQUEJCCQklJJSQUEJCCQklJNQtZD5YvzDqQiZmPrnrZaeQMRtv73aAdM8mJLLaVklWo7irF2fyAAAAAElFTkSuQmCC" InformativeScreenshot="6aebae021520c1af7e41e5a1f30ec399.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/SgHvu2vRI0-vEksEtF-lhA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="668, 234, 54, 26" FriendlyName="'Term_grp_Camlife'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAZCAYAAAB+Sg0DAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADuSURBVFhH7ZRBEsMgCAD9Ff/hNeUz5SvlL+ZMQaPJpEkvnbSmw2EPBhhZMaZpmvSfCKHRCaHRCaHRCaEGY9KUDkDerfkGH08oZ1ECkwBSyXk355uE0JZ3QlnYYtCvIuCSkzMr+neLg9cn1PvjplCuLClhqwNFttyS09bHB3ea0NIwKUsucm3teT1uDZLFS41QFTK5WtPWLiG1Zpbng9twnhCjbWxTIenfhPzUq8BauE+tCcyPyjan7/ULodq8b/6KX5nLCe1NaM31hFbNlP9h08zlhErMH4LSwAxYI+0BGFVoNEJodEJodEJobCZ9AhT3fSsiJ6KMAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Service Branch'" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_8" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="d14Q3kfx9UKQTsy30yaVvg" DesignTimeRectangle="722, 359, 85, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Service Branch'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Service Branch' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Service Branch' role='text' /&gt;" Guid="0bed9895-cefe-4326-884a-7a13ef079f53" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAFkAAAAdCAYAAADBwsDVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACXSURBVGhD7dC7DYQwEAbhq5nouqAfanA7jo02WMTj0EnGTDQj/dFu9H1qrc29O5GBHZC/y+IGbG8a25DjOM2zG7Az9AW5lNKsv3BMw1tke57IQCIDiQwkMpDIQCIDiQwkMpDIQCIDiQwkMpDIQCIDiQwkMpDIQCID/UXOB+sr/G6REzqfXP+yn8gxG9Pe9ILsxk/k11fbCnMIs9Dd8tpyAAAAAElFTkSuQmCC" InformativeScreenshot="6e5ceb9f6d870112e3c8b26d0ad13e2e.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/QqgWWC0_5UasHoZ7fLh5Zw" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="617, 355, 104, 24" FriendlyName="'Service Branch'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGoAAAAaCAYAAABfA8lWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJuSURBVGhD7VfLlcMgDExXFLIduJDNXn13Eb65ARcRt5Aa8JlFBIEiC3CyTja8x2EOMRIz0vDLaV1X0/D5aEZVgmZUJWhGVYJmVCVoRlWCZlQlaEZVgqJR+jqZbjiZ04/H0JnpqsXYv0LrxfTAdbYc+lgOrW0dZ1IHqad/UT0lBE1Db5ZCvVmjQuPAHDuRM23nxM/gLUaNU/yG9byAbw8ONOq1xrwTklGAaQSj1L/squONskeEsgVKk8Gq7AcVjhI1RtIoRBkFO+X763aMkhWsr71RNkbNi43f7igYp0cv6NjDzSEZxU+IjV6vg2ugx2XMsd9Gr8Ua312ijlQNlC+Ms1xE8Y5a5tgIN8kcDYtEvbu3koWTFasvnZsLxbj5/Tg3KuT7RbL43JupeW7UjwjxWAvCNWa5j6F6mQbKK9WYHM/VkMil+otGAWByWPWhOBRBSEPsXeO3xFR4vAOxKGYUM5WixE1jAZQ3fvN8niPXqOVid+9o+xBWPltMz9RQyKWxu4wCwCTTHA0D4rvdxpAr/HYvWDHk2EMOKhTnl4oscfN4ySj3nRgu6XXfnCZ/muDO3WlUroZSLo3dbRSCEkurmkIq3H3HPLhfyA7gQrOrscDNEbQ8ahTTsG1uvtnZGgq5NDb/mPAkeL5uRBAid09kxrFwNy/GwdxkrJSfaqrEjVyR08ezo4+++iS9tAfwO+zklMYna5ByUSdgx2OC30/3fxDdJY5N9+P4h1gqHCEdCZJQ6cUUmpjh5ghaMBYBR1pit2DuhK85AL7uEuY+UsOhRjV8BppRlaAZVQmaUZWgGVUJmlGVoBlVCZpRVWA1vzSysp0V0s1NAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Scheme'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_16" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="%[k(F9)][k(Enter)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="izoD0kjVVkGlYhiuI-C7Cg" DesignTimeRectangle="302, 555, 117, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Scheme'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Scheme' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Scheme' role='text' /&gt;" Guid="91d16482-5f07-43dd-b19f-d2675c62026e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHkAAAAdCAYAAACOn8MFAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAACiSURBVGhD7dMxCsAgEETRnDlVbpH75Axex9owxUrUIrU7/8OAgt3Do9baWO6BbLAB+XoelmCzZUfW5bxvlmCz5YJcSmm0b3IMQ53Vgkz7N39UkBMGskEgGwSyQSAbBLJBIBsEskEgGwSyQSAbBLJBIBsEskEgGwSyQSAbBLJBv8jzA9or+YWhTFVHDuh4xPZdJE9tQNYoR1/LBZnlG8jpV9sLDLiunKZsussAAAAASUVORK5CYII=" InformativeScreenshot="cf4973839aae15bfdf9b2e6a0c8a12e0.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/vsSTLoy18E6NMXnZQxCNXw" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="231, 551, 72, 30" FriendlyName="'Scheme'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEYAAAAdCAYAAAAXZxqwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGRSURBVGhD7ZZBsoMgDEC9lffxFH9nt+w9RHfuOx6iXsEz4JoSBIFISgVn/kybxZtphaTJK6Rt1nVVzBEWQ8BiCFgMAYtJ8Pd4sJgULIaAxRCwGAIWQ8BiCKrEyGVU3dCo5mYZOjUuMrk3REod18N+oWaZ3/8fFIuRclYCpIAM3ZyR9GGzXy6mvLnfEKOvUHsfkw3KRURXDfZFsUPr13v9+ulzwAkUet3HeomQt4V4/Uzc7R4Tr/MW5EtRNWPmyX+QKWTygvbmrbT52W0FTbNf0zFCzyR8gsL3MLPwNd3F9NtM8+9Bhs0PgmD9g3y4L6BKDAANm6KcIFe8FRF+a46jCDuvXCOBRBdjvgQncj8x+ASW5XPPQqrFAFDIOHlBIMOdphIx0UlEQL6zYnL5cH3AJWIcoYyrT0wUf8GJyVE+fO2HuRlyKAYXGxSXbSRYNzMBr58Vk8mHewMqhy+eL110Z6EB/Ku0Ff6+kS1W7wliwz+PZ8Xk8qW49Cp9EyyGgMUQsBgCFkPAYt7AYghYTJJVvQD36fOtAry7sgAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NSelectItem DisplayName="Select Item 'Is Policy Backdated'" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NSelectItem_4" Item="No" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>No</x:String>
+                  <x:String>Yes</x:String>
+                  <x:String>No</x:String>
+                  <x:String xml:space="preserve"> </x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable ContentHash="4romzAnvzEe3LfXbfPCMVg" DesignTimeRectangle="284, 319, 116, 25" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'Is Policy Backdated'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Is Policy Back Dated?' role='combo box' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Is Policy Back Dated?' role='combo box' /&gt;" Guid="53122529-b2ba-4e6d-9a4f-4299f1db31ba" ImageBase64="" InformativeScreenshot="a158fa063e10174db306d47306874f20.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/KlrydHtZPE2Bd6l5WB5HQQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="136, 320, 146, 25" FriendlyName="'Is Policy Backdated'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJQAAAAbCAYAAACa2qbZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAM8SURBVGhD7VfJkcQgDHRW5EM2joZYyMXzZhHmELI47GGmaqf06IdBoKbVHN5er5cTCFZBDCVYCjGUYCnEUIKlEEMJlkIMJVgKMZRgKcRQgqXoGuo4jNPb5ja1O3scbAyHPI5CabfbuXmOw7pdwTjtjM9Nv7kxT7CCaw93NGxxUdrc0v8dcDofdnc6tEV4bUxDm88aCo07bBJLTRXq64byRcttmev7uR4ZCnGxZneKtI0AY/Q+H49x0d2bKeSP/Ed1+JqhAHZXnsjmtBnP9SkDUXBFBBgNuefM38O7hgLc4ZINcMOAGDO6H0Y363jLUCGZPk0BgKN4Zlxqp4aCk6Caz8eno/SyU5iF0qMY+LBxHQG4IuYTCvHnjn1cYI5LaCdanOaY5xLaCf8Wl7L2hKgd6Kxw3eq6ZBPGvnNu3lCQo7eGW4bChuidNpyh6DWSY+AbxAiLxv19Q2HxA7coutrthVtvhxceFMqPt3VMzEXX1+OCY03kBe2UB81TtXPztbgkc8Q5qvxR5yqejve5TnOdOlc8IDYatrWGR4bavNtBbGjrjqNAuxqLlMdVwg0MFWNZQyNR6RousakfFbHkque3Bk5UL3jsm+JCtSBmweC4hHZGqyYXaihubKjjucFoP9U5jak14c0EuHnl+e+8AGjn/4ToONoP4E44vLiRofonJIqNAmNB69hxEcu6/Ubyj11LTts+lxSbUBeKjW1wgflHXKih8iHAAOaj3NuGink6NQU8epTDIvLbhyweMJOc2zl3DIVFxvPWc3nRA8/2g3ZUxMCF5KLr63HJscAbzUnjqljCBV/ZQy4TJxQG7W8ZahYPrry4sM7Op+NofxUDxMN8D99QpKhFmDR/iaEcqjhURMjFFTHFlF0/5kL7pt5zmEvDIEMuKR7lDzpP6pj6Mw8Sl9opbl55nkz1l8dPPps8mGjxXx7Ol/5GWrsTkLleAO9EPFfhGa56cvK1uFw0JAbB4Lkoz5+uq8+l9HutwERwLSJuMCbpHPImTh6tv7zZmnYN9d+RDNW6FgXr8bOGKru93mmCz+InDVXeAfW1Jfg8fvrKE3wfYijBUoihBEshhhIshRhKsBRiKMFCvNwfCRMxiO+68eIAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Group'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_14" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="fHcp0Cc-0EqQ1KeQMuK2ZA" DesignTimeRectangle="219, 91, 73, 23" DesignTimeScaleFactor="1" ElementType="TabPage" FriendlyName="'Group'" FullSelectorArgument="&lt;java name='Group' role='page tab' /&gt;" FuzzySelectorArgument="&lt;java name='Group' role='page tab' check:text='Group' /&gt;" Guid="8a27e575-4a2c-4a91-9a1a-47ef8215100e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE0AAAAbCAYAAAA53gJaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAGcSURBVGhD7dbBlYIwEAbg1EEHnLhtAR7zvFqDOe+FbYCzJVAH1kA7nGcTYmTIDgmgEV2G9/4DZIjmY4KKr+MROMvCaCsiuq6DUH6u192FcsARU0X+RHvMlAujBTLlItq2he/L5c8Ax4ZyYbRIKBdGi4RyYbRIKBdGi4RySY5WNhUUQoBAyVRN1r5jKJekaGWtINNIRdUM126InwJHuSRDK5saDjmNYzElnJoB811DuaRDmwnT1+USCg0sbvWuQ+12zuFQ2zn8OfG5fUi6Vsn7a0DIavRZa0K5pEOr9JfPFZznoOkFui3stu/93MwzwgyhIfgnvQYol5einaTrHhPbQXbhgW7qF49rw2j4/XlW+cPdRrlssj2DEB42xliKNrfbQ6FctvkhmNk9S2r/RaeZ2EWN4dzixtvTR5p4p3ljPYqH5jrLr10byiUpmsmAhIKevo82XHP1FteNWSg7limlYbxOkwbZjT/+X5BySY72qlDb8xmhXBgtEsqlR/Ph8E2fkk3QcIEb5ETQTNyBb9p7omg+Hh/0QaJxQmnhF4BkVKmzuYIgAAAAAElFTkSuQmCC" InformativeScreenshot="4ee7f34b55aab33a7cc71aa376d5cf05.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/NMwlMeH9TEC7b9jc0_qm_g" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Delay_4" />
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'text Group Code'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="433.6,218.4" sap2010:WorkflowViewState.IdRef="NTypeInto_17" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtGroupCode&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="Lys1MWbN0UC-kdAPRGCTrw" DesignTimeRectangle="119, 205, 123, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'text Group Code'" FullSelectorArgument="&lt;java name='Group' role='page tab' /&gt;&lt;java name='Group Code' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Group' role='page tab' /&gt;&lt;java name='Group Code' role='text' /&gt;" Guid="1e42550e-d5df-416b-9e65-212b2c150b65" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAH8AAAAdCAYAAACDgbNCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAC8SURBVGhD7dWxDcIwEIVhz0zFFtknFQN4CJZwffAUXXCwEP29/6SviJ1Uv620MUZIay0injBCfGOX+Pd9R2E/42vztm0o7HMAjlni997j8d5ALeqrtjlaW+J/f4Q6Mn4+E98I8Y0R3xjxjRHfGPGNEd8Y8Y0R3xjxjRHfGPGNEd8Y8Y0R3xjxjRHfGPGN/Y2vF+YPUIO6Zny11toZPw9AvoR6cvKiX+ILU3vm1svNR11za1n++agrD8AxES87dcvpovMRHgAAAABJRU5ErkJggg==" InformativeScreenshot="1f2106ef28ab7f598ffb160453f771c6.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/WDH8Ph53ZE-pQFINv9YydA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="142, 184, 76, 19" FriendlyName="'text Group Code'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE4AAAAVCAYAAADo49gpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHqSURBVFhH7ZdNjoMwDIW5EyuOwgW4RdU5AUvWHIA126qnQGIzXXMJjx3ikpiEUGukYaQs3iZO7OeP/LQFwAuyPlcGp1QGp1QGp1QGp1QGp1QGp5QPbrlB0xVQfFndS6iGG8zw7S26guaphsrxWnU1jIvW5wNaynXHHCd73cChEWPg2W+gEGR1x4TdteDNz9J4baaHHePGS2hV8NTgemguCCgs63XoAzGttODeu42/YEwMGI+wW2jpoR3WXbAem5tzbORHkSY5XkPDOXDnNFOkAes1GmcdeqK4PU0Uw+vIXFEuOFqPfb7XiyvLgNu2fsIMN+kdCR7DojRmCromToIz9enDHR+7c14/9ET3Jc8XcV7v9xAFZ83jmNG7iX2C4G71xuSa2I7b5wzBOQUu5WkXF54C601d52Mmj+o4UMI4uGAjXj49uJAfjh2BS3mKbhTrieMh8Zrk45ACF2zyl8CF4dj5R49DytMunt5xUhYciiejIW5wZPJH4HiMitKc3X0iTPGlLMFhHf+O4/hmlrXtGNm48Bn1JPqwvYfiZn3A0waORJeg85KQ6IdliwZXUKKgs+7wBUNj8ReMc2Id51XluyQm8wPY5lxrWkg8J+XpxKvq/RkQ+X1wf6LIx7i4MjilMjilLgDuP+oFP48tdFKrmTiKAAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NSelectItem DisplayName="Select Item 'SA.Criteria HLMT'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Fixed Amount" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="4">
+                  <x:String>Multiples Of Salary</x:String>
+                  <x:String>Fixed Amount</x:String>
+                  <x:String>Varies For Each Employee</x:String>
+                  <x:String xml:space="preserve"> </x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable ContentHash="JPYGIhlYHUm6RAU5vdv3qA" DesignTimeRectangle="324, 574, 163, 25" DesignTimeScaleFactor="1" ElementType="DropDown" FriendlyName="'SA.Criteria HLMT'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='SA&amp;#xD;&amp;#xA;Criteria' role='combo box' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='SA&amp;#xD;&amp;#xA;Criteria' role='combo box' /&gt;" Guid="b3a7fce8-fac1-491f-9310-388bd6b52453" ImageBase64="" InformativeScreenshot="e60cf034bd933b7223ee979fa689b479.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/vGjSvpOQaUGr-Ph3gc_73Q" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                      <uix:Target DesignTimeRectangle="368, 535, 75, 38" FriendlyName="'SA.Criteria HLMT'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE0AAAAoCAYAAAC7MHdZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJJSURBVGhD7ZnNdYMwDIDZKSdGYQFvwQrMkCXKsdnDl3aJnF0bWcF/JEamKH1V3/uaUowDH5LBcne/342wj87+uF/CHoz5NsI+RBoBkUZApBEQaQR4pemrUX3wVOoHM+uvpN3NTNhGXZN9PDBK8zKcKGNFOYGLuNFot43t9Gh6lNr5tlE/58MobUNSgp4uVtbFKAWfUxaJ58MvzdLbtCuLw2i0Yn3E9dOt0O5cWMc0iCJMPRtNUyIPU3MZywKBzCnK+yCw6HkIxqxYCkpVM2zPyrXhT1F2acDNzNMqDyThUzMY/K1gt587Rd9EGhBFVvTUTGBOUT5pPmrceAUC4shCgXFUYRveFGV+EKTj2eBlbMspyzyXt0rPv4JIIyDSCIg0AiKNgEgjINIIiDQCh0hbJt3LyyjQFyuwIYV5ZTO/0WeZZmnrfBHf0GumOvkF6nlcSkN521r+jDRfSGyt3Ud1s8L+N6NNmp90Y72rDJa1Lz6FB/NhPh9Rsf6N+EjRV/t/iGJHr8LKxvM+H5Fmb0a6cHPERL9JWlokLINl7TBdk1TKIg2ljDA2ZosuFX1im0cVJe0Dz28/50mLTvaFtEKxEb4LJVX0icfNNmJV+KCK91M4MT3rpeHNKAHfVSPNtlm2/doDRiu7NDz5pwP4fmmvy9oVfWY3tHQMjUZpYYpuvXJUXGAmfz0G3vc22ldIy6MX+4Dzp9AszZGuKMUvtzXS3EpTcFHuWJdOSxtPU59w/HTQgvMh0v4bIo2ASCMg0gjYMdIPlEIlnfkBMDA6Vp1wtAEAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                      <uix:Target DesignTimeRectangle="136, 512, 222, 22" FriendlyName="'SA.Criteria HLMT'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAYCAYAAADj7PGVAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAARESURBVHhe7VrblaMwDE1XFLIduBvqmP+hlaGWJd9ev2TLsvwggZDM6uOeMwmSrCtdGcPkdr/ftUAguAYygALBhZABFAguhAygQHAhZAAFggshAygQXAgZQIHgQuwewG1btLrd9I1iUnpeN9aHYttWPU/WT+ll24rPnM8z2NZZKxcfMOlJzXo9Ya1nYOuwqCnm2ctxUZgTgVpSr6bHuD7SlyP0MYIjNXO2/lp4fABRU7cVij4NFZkSPrMA26JMXCPmeUH5znoiHN4B6+yHTy2mJjHvlbXFiPUjfC4dwCf0UcO6mI3U9NH+faRmztRfD4cMoAUWD7bn8CrCzwrw1YAa2qGDAbR3Ms4W46wBfARH6IND3DQH6rEXv3IA7a434+OUsV/C7kcJcwWgx8bJHakYuyBUrrGjd5HEyRxNcV5NDnkdSk5wXWkVY0xNAUafiJ0nCtITzCvVMs/BcTTXYU187K1zyusEsbxPXhf4vtQHeSxAR9RynT/kEULp778/pRYYzeTxar1idLUrv5BP9vgwtlEcfAQljbKfTdK+yfh6uwDR35Cwa6xokGgj/XMQL9TRXTflm+L0OYTrvQF065s7WrxeH6pk4+PU7CiiX20Aw5plzukzcBzj1OKQx3Df1fQR+lvNC/eD3AGruTGaKeNT33askfyw1lq6+/r6ynDKSxjuzoO/6xYg2HIEcCNoYahtsevGdQC8MJ1tlwNtSqWJTEyWF6qr31X9Ova5Z0bPrxzi2qQO3RwZjr5mUJc+JwrMIwPzEmZd7AlDRb7N2vUGcKS2tTqQz+C3Jz/QmjttmA23Vh+Kw46gGNwOkIu3XYDWDpLZhqZgAWW2jMAA+M7ZKmidQ6+pZcxWPrBeFtvkB0ccLAyKuDbpSS/HKBoGlvcIJ4phGxfXiNVuLrU7JK5dZwDbmsnjlbwYnnvziz4BzIbD4ZQB5IS2ZwDBlitmimWK487c6RhQ2DVy7Q1gn0PuwzaxEpPjRQWUDUcQXQ1xbcKzmyPDEWOEU+kzYEPqUObJ1O6Fd8BH8gPYYY3Pgp2+WZwzgGBjCVmB26RahDuNpkJJ8ZMNzQEQfU0xfPFWvURxNwZwLwcQCOVgkD8D+utFnkRg6+zz9hx9DtQHEGOTWhR1bNTZcSyu1+1rNR+yCT1JXKEf9XXid7UBJD5YM4Vt0Sty/YH8vE3QU4hf29gwThlACyfY6hvEdqO9f/lGC68H/4QeIeleAqA3fc7PHhHCWb3GqcXBXTeN8o20+UG+tElmnRijfre22MzzXnreCDmaQZyMnx1izsci1o/mT0XJ1tnWJq2Jh73sE18njFF94B8cpBrVN8TcR+nvn7G3oODf7lVZl735uRjIZ/SHHrsH8F0AA8gdOd4Bo0IU/N/4yAGM4kY71rtBBlAwgo8bwHg+d8ey9xW2DKBgBB97BBUIfgNkAAWCCyEDKBBcCBlAgeAy3PU/D5/GRTUdLCoAAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Sal.times HLMT'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_18" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="[ExcelRow(&quot;txtSal&quot;).ToString+ &quot;[k(tab)]&quot;]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="wikfQCEJP0mcqAxM9dVh9Q" DesignTimeRectangle="485, 574, 95, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Sal.times HLMT'" FullSelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Sal. Times/&amp;#xD;&amp;#xA;Fixed Amt.' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Policy' role='page tab' /&gt;&lt;java name='Sal. Times/&amp;#xD;&amp;#xA;Fixed Amt.' role='text' /&gt;" Guid="32d95e73-641c-4ee8-81ee-9733fb6aaa4c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGMAAAAdCAYAAAC+E9IkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADLSURBVGhD7dqxDcIwFEVRz0zFFt4nFQN4CJZI/fEL+RaFS5y84n7pJDgija8QjUvEO+Ch9NEFDp7bFrLv+3HHdbTnSevyqDVEi/yMa2SQ3Pv+nxFjoWmtxavfsZb2XHutGTH0QDLG7EWsQQwjxDBCDCPEMEIMI8QwQgwjxDBCDCPEMEIMI8QwQgwjxDBCDCPEMEIMI8QwMo2RC43WsxfxX/kj0IwYumQITX4J6+WMozrn+hg9ZK6dPDclHGK70W8IrTnEdqMM8t37Gh8uQxEyG6S9nwAAAABJRU5ErkJggg==" InformativeScreenshot="31c8c56383973337900d46cb57f58594.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/dBv2LH2JTkW7aTr00lL0eA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="487, 538, 93, 36" FriendlyName="'Sal.times HLMT'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF8AAAAmCAYAAACiYUf8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAANWSURBVGhD7ZrLlesgDIbTU1YuJQ24hrtJC9QwTYwXs7ipY7y5t4msGQSSEA+/sB1yzrD4z4kDRuiTkGPIRev/uqmOGvyKavArqsGvqDL444fuu4u+XFDdTQ/jv3zfRA+t7L3mHr18z9ALO7H6D9Nn23hHy86vu+uxwHYBfHQWgINBCASAWD2BUlhkN7ZTE76z3alHpm1ZBfC3wo51NPyaciz6oWw+5fCNOrPssyDGe1KWFJelo+FH4xnbHdjs71r1V5zD1QCSpRKuxRhm9aqO+oJf0oYZn8dxPvN9w818V77iimr+qPxkrCNKBgGDw4GJV8qL4MM1BJyvATiUBwoC2ffzc/3D+ZKvECz5GWzb62Q+61X2wDUaTdSdU6hoEqPJNNWbPpxt5OyL4HOGLgTfZm9Ytx3kq12tnGhmZUDwvG03Tmm9BxXDd3roQfkguIygzMIVQZn0pvAZbkahPyguoW7coHxt1E74TsFyxEzyk5p3Ph5rWufAz2V+TpBEXPth7J31HrQdPk7W1/S8M+S8zyyaaAw/vs7YtMJ+R8MX7e5dJWyXJYjGhkDZ75O5bFPhAzeu9/LXDLx4EHBss9foQOJ8fJ3ac8J+h8M3faA02u9Q8A7D/pj+wa+du/7Wf+0Ye+o96JCy01SmBr+iGvyKavArqsGvqAa/ohr8imrwK6oAPr60ZOS2FNa+NJVq7fjUz4hfuN5L5fAnX63fBD696Vrtn8s43O1GYa6tVCfAP1vr4NOeTB9sbeT7LirZsjhG52c+ZyDBorIlgMCO4eRJErT7LIa28DCE7ErhHGCOeG+wD8Mw15x2kT+k/auI9JKywzubJnMU/hsht+WcO0lK7A20qTcDIchUEQjqLxPC2qRrd2BibUofgvEiWzt03AOXnUvhJ9kjncjspwfbuEl7bvxQFGwKsPv7iVxpMcw44JGNt4MvMynQBBzO2LD+8qrICODFIJfhZ9rjAP4u+PFqmQETa2vmE6icaM6/CT796wwAyvrv+vvxcidJiT0MxhR8Gj8MJo2Jq24rfGrn/qmPJTofPsFKJi5KyexJErT7bJ7/tRNBFm1BUDbDl6dzN/357U6yKsBvOkoNfkU1+BXV4FeUeYbAg6Opiv58femm1+n5fKKe+gdNDxmqBhJAoQAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'GroupPopulates'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_15" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="ECyoyfxVq0ueAoL3xyb3KA" DesignTimeRectangle="719, 179, 181, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'GroupPopulates'" FullSelectorArgument="&lt;java name='Group' role='page tab' /&gt;&lt;java name='Populate Events' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Group' role='page tab' /&gt;&lt;java name='Populate Events' role='push button' check:text='Populate Events' /&gt;" Guid="f8fe2ee1-47ee-4b1b-a3ee-dbc40210417c" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAALkAAAAeCAYAAABwtL8KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAK9SURBVHhe7ZwxcsIwEEV9oFyAO3AOGrpU6UJLAx0HCC01RRrCKZhJlZpLKJZk2avVypAEE7T+mnkz2JJWkvUk2wWujPkylJf3d/O8XgNQLNzpRHIAtAHJgXoEyZGQSk+x00xynz4AKBT7TmmhXieSSxUBKAn+8gnJgTogOVAPJAfqgeRAPSokP3wezVP1aqpqwdiY+adc5xb4dndmKeTdivzYLMO2rQVFkqcTftjvahGGE/1ayf+yGO6xkCj3bu8e6JbcnM188mqm+/j8rYDkZTAqyX25cOvvdnhfrj5e2Z2/eRSYnUidLjY9TvLcnSM8SvgYB3MyU7FNej4vVW5suXw65lwboc58tWnyFuZpdc73NRrXcHfGoRjB44o/HyawFT7K82Lwsm7iuUTkOPotxvdCJDHY4tta2SZHs23yKb5uEI/hFpGwkOtYbz1thJh2fK4OvRZJX+24mPCZvj4qo3nx7Js8LorFSWEl4vXIMc+jRPF7YvCyNIZUViL0NfwWF2fSH/nayPXia1MaqndyCt+B4tt6Knko/8YnvU8Id0wXW5/kfFH+XnJXxo3NjoO2Kbch90cek8tvRA9xShN+PJLziaU72w12cv+7EzXdOeUYob0c15Zdzuq29nXZ6JFErtfXn0vt0UcbKf8RGY/k7LYbPYc2krfPrKQsr+fkF4Tgk7+c2Z2PSk4XQLyo+vp/zdgsvn3/AumOe9rgMdM80ld+DMn/Bz5pOXy5cNsVpJt5UagsFi92OH+spU9laRdKW+7USkbzWumaxePLd33hxH1OiePF1yDXBr9euXG0sZsFxOOUggrJ/wrf9YAuIHkNJNcNJK+B5LqB5EA9kByo56Lk9k+gUkUASiB8HIt6zSTHF7RA+XCnE8kB0EYVvlPBkQoD8Aj81NdK2u4taUUkpKET9S2lEzpNedm/zDcABb2doVJlzgAAAABJRU5ErkJggg==" InformativeScreenshot="942589cd7b9b71e30d20379aa946ddbb.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/1V9wNgM8gEqEeaK4DqzYzw" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="133, 128, 213, 23" FriendlyName="'GroupPopulates'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAANcAAAAZCAYAAACin7txAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAARESURBVHhe7ZrbdeQgDIanKxeyHdCNm4lbiTtID+s8s9wEQoiLPSaZOauH75zMGIR+XTD25PH9/a0FQbgfaS5BmIQ0lyBMQppLECYhzSUIk5DmEoRJSHMJwiS6zXUcm1aPh35QFqXX/WDnUI5j1+ti5ym9HUfxmZvzDMe+auXsA4te1Kr3CWs9g43DppboZ8/HTWFNBLWlXC3XtF7Jyx31McKdNTO7/oDx5kIJO3YI6DIUQCpmprhjU8auKdR1Q/6ueiEaXoF99Y2lNhOT6PfOjsXE+BE9v9pcT9RHjX0zm6TJo/37zpqZWX+YS81lwYWBx3P8lJhni+ungRjahoLmsncgbixmVnNd4Y764Igb4kA8zvJ2zWV3qxUfccz4LexaVAwnjh7lFnfMYcaFIuSSNrr7J03muIj9amrI41BqgutKq2hjaRZXnBM5eRIgOcG6UixzH5xGcx3WxEfRuqY8TmDLz8njAt+X9UGO6ujYWK7zhxzrlf74+1nWAlMzub1arpi6OuVf8Cc70pebwJPHQpIE+9k45BOIr7fFxfnGQbvGjpqEJsk/d/BFOLpbJn+Tnb6GcL3XXG59cyeK1+sNk8Z4O7VxlDiv1lxhzdLn9Bk0jmlqachtuO9q9RHyW/UL54Pcuaq+MTVT2qdz27ZG/MO1Vqu7W15ocHcM/F1XXBjLNQUOMhVNxxa7ZVwH4IvOje1qoAGvJIixyepCcfW7oV/HPmes6HmRI65N4tD1kdHoYwZx6WuiYB0ZzAuNfbMnAxX1NmPXa66R2NbiQD7DvDP+Qa25U4LZTLn4XD4WYrjOzQuzLa7W+c4OHhsCjosjG8sUD4DveK1g1TX0ElbabPkD62W2jX9w7MBJp8S1SU56PsaCYLC6RzRRhsc4u6YQ7cZRu7Ph2HWaq10zub1SF6PzrH9xToDZTG5pLq6IzjQXjOUClWwZ4e6Mm27NxbiGr73m6mvI57AJqtjkdNHiyAo/FFSNuDbR2fWR0YgZ0VTOGRhD4lD6ycTuB+9cV/wDbCPGZy+St3uaC8ZYZ23x2gVbYjpJpEWQ7Kcx1AcgzjVCfWB2vcXCbTTXWQ2QfKrBkD9z+euFn6R49tX77TV6H+gcINomsSji2Iiz01hcr4+vxXxoTMhJ0gr5qK8Tv6s1F5mDa6YYW+SKXL/gnx8T6inYp5vWLc1lccVYfdPWTqKfX775wevBD6i1XRfjHqjRGzE3z962w9m4pqmlwV03SfBJsv6BvzQBZp1oo36XtRzm+Sqd74OPpskWM882KDfHEuNH/acFx8bZxiatiRu5zBMfJ8xofeAfy1OM6ptdPkfpj8+xt4Uwv52rMi5n/XM20BzuHwC6zfUqQHNxx4BXYLTIhP+Ht2iuWLhop3k1pLkEyss3VzwPu6PS6xatNJdAeZtjoSC8G9JcgjAJaS5BmIR5nLHPM4Ig3I7WX1oQhLv50v8Akh9cAZqjvU8AAAAASUVORK5CYII=" SearchSteps="Image" TargetType="ImageBased" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,269.6" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'ClosePopulate'" sap:VirtualizedContainerService.HintSize="387.2,157.6" sap2010:WorkflowViewState.IdRef="NClick_16" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable ContentHash="HaM64kKdbkKGPxLC7qXgGA" DesignTimeRectangle="812, 501, 28, 25" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'ClosePopulate'" FullSelectorArgument="&lt;java name='Events Extention' role='internal frame' /&gt;&lt;java name='&amp;lt;&amp;lt;' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Events Extention' role='internal frame' /&gt;&lt;java name='&amp;lt;&amp;lt;' role='push button' check:text='&amp;lt;&amp;lt;' /&gt;" Guid="1cc81c00-89b6-40ca-a186-f03fbd857942" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAdCAYAAADLnm6HAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADpSURBVEhL7Za9DoIwFEbvA/kCvgNvwubkhqsTm0/h7MAC7uwmTM7unT97iyUXgkiF8pPQ5CTlfm3vSQMJBDwxFUQEpVSNZQnwgiloFeCgnPsdpqmQoGOS6LIVKEfmCe7F1ATyPNcRKgG5gehkGDqXHOJY13sK+GAT2ARGEUjxQriPENzc80ECKR4IKNJrLwgL95z5SyAt7th1Nf6RS5wFysOvOLdkffIm67sByWzvQJPZvoIx2ATWJfDtB8N1Lln+DfA/W9vGMeCzOwUYu8gXtk8lYLrrYR4+oW9s80pAFqaGmgXfo95P4Q23TPbrOw1QpAAAAABJRU5ErkJggg==" InformativeScreenshot="a9501803a96815881143079ab2c79cb1.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/Q8R7r1fu30e9fm0LQImU5g" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="2">
+                            <uix:Target DesignTimeRectangle="699, 502, 113, 25" ElementType="InputBox" FriendlyName="'ClosePopulate'" FullSelectorArgument="&lt;java name='Event&amp;#xD;&amp;#xA;Deductable' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Event&amp;#xD;&amp;#xA;Deductable' role='text' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHUAAAAdCAYAAACUoyOLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAADHSURBVGhD7drBDcMgEERRas4pXbgfn1IARaQJzpsMBLRKUoAZfaQnL9g+ffnmEvEMeCGqmVJKlPt5rgPN2E8O2q+341g3NWM/M+yIGuNLrbX2jR7Q/HjP2EPut6LqRo76/RKuj6iGiGqIqIaIaoiohohqiKiGiGqIqIaIaoiohohqiKiGiGqIqIaIaoiohohq6CeqDnJUzf9exDXlforazQOt+RMT9jJXa21E/ez7gbD2XLNfD6uvc240Yz85qPAzt4EcNiLiBUWrgG2ZU7y1AAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image" />
+                            <uix:Target DesignTimeRectangle="710, 463, 91, 35" FriendlyName="'ClosePopulate'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAF0AAAAlCAYAAAAgAOVvAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAK2SURBVGhD7ZnLYcMgDIazU04eJQuwRVbwDJnC1+7hS7sJlUAyGIQNjWuaRof/gMVLH1g26GLtl1WdK4XeQQq9gxR6Byn0DlLoHXQ+9Pluh8vFXjJd7Th/ym3+mfpBNw/Z/suap7s1Y5+xWe8FvfOCs/4Y9A87DhhqbnayFGqo/jB+UPkBda5LWBrM3c5c1z6swefDzY6G61ytmdDOfbOiMU7W34npA8Gbbq7sQUE4GBEex3uGercTlmEBuOzBU1mo7+y600uOEyhnp92ZLMiy60GlRfGLkLw5Cr3s+GQIFNVlyB4w2nL5N0Ohy6pxnHe0i93Rr6Sw09dS6LKqHI8+egtAfB6gupieQt2Dzva3hS6IP54oDiXxM98ewPGCoOBPxS8A2vegY+jiEBW3O1fnQ1cp9B5S6B2k0DtIoXeQQu8ghd5BCr2DGqDTwSPRAKe7cGJsVX54OU/pQSq1/97c2qFHR2jMwjx3l3GsY21ZoReFjvI3gj/Nbx7oWPNl1gtDT5MO25kdtIe7F7T5exR2LAUhOA7t47sXDG+hHovqJ3VdRim7p5GyTGiXxt7xrVKHQffXrQHaZmaHy9DWL0At9DAHtM/x2NlOX9fN+6byAprH4re2MHbRt4jJjo6FvloAb19ldjJ72TEROrXPbh5RhfAyT7A7DSyu62drLKi/6l8eu+gbPavRoeFlL7OTX9e2QS9e96Kkne7awk6Gj+vMO7MCugcrjy1JnM+Gjv2QCrthpczeBj1e4KzvFHpWN+27DN23kccu+tag56CX4ig4UpXZIUeCPanP/e+09yCS+XHfVA47NekLZKZ8Z2/NXfaNmFSoHfpKV3A4ORzha+wmQ1pldtDOIAFW9vcCdoC1aYf2cf/x4SzNCoUyaPlL4RjMENv+XjZ9q1QDdNVRUugdpNBP15f9BuchoThG4HH/AAAAAElFTkSuQmCC" SearchSteps="Image" TargetType="ImageBased" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="434,90" sap2010:WorkflowViewState.IdRef="Delay_2" />
+            <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="434,87" sap2010:WorkflowViewState.IdRef="TakeScreenshot_2" Screenshot="[ScreenShotImage]">
+              <ui:TakeScreenshot.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7bfcd7fa-5459-4a3e-9c04-e34ba24a20ed">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TakeScreenshot.Target>
+            </ui:TakeScreenshot>
+            <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[ApplicationScreenShotPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["src\Results\Application_Screenshots\"+CurrentRow.item("TestDataID").ToString+"_"+now.ToString("HH-mm-ss")+".png"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:SaveImage DisplayName="Save Image" FileName="[&quot;src\Results\Application_Screenshots\&quot;+CurrentRow.item(&quot;TestDataID&quot;).ToString+&quot;_&quot;+now.ToString(&quot;HH-mm-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="SaveImage_2" Image="[ScreenShotImage]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Agent/Documents'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="pHjrb1n-IkuQW7mOCleexw" CvElementArea="267, 75, 100, 23" CvTextArea="275, 82, 87, 13" CvTextArgument="Agent/Documents" CvType="Button" DesignTimeRectangle="266, 76, 104, 21" DesignTimeScaleFactor="1" ElementType="TabPage" FriendlyName="'Agent/Documents'" FullSelectorArgument="&lt;java name='Agent/Documents' role='page tab' /&gt;" FuzzySelectorArgument="&lt;java name='Agent/Documents' role='page tab' check:text='Agent/Documents' /&gt;" Guid="42034641-3fd2-466e-a865-79b7ae69d430" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGwAAAAZCAYAAADUicu/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKnSURBVGhD7ZYxctswEEV5Dp0grNRl0kYlx60mN7DYJo1ygLD2DaxrRD6DrqMa5gL44Ae4pEnaYegZcOaNQGCx2N0PgCq+PjyYzOchC/bJKO73uxnj98tLZkU0DZhiyCh1lFkXTRMhC7ZRNE2E4na7mV9PT1Gn5iCzPqwJyIJtGNYEZME2DGsCsmAbhjUBWbANw5qAdwl2rAqzqy/q2Hs5XxuzL2tzul79+8UcytJ8/1mZoiiI0hwuzmarpLlMhTUBiwU7X2qzq+q2iJU5zgxkCtY/C+bfH/+0glVNbFf8mxg+ijSXqbAmYLFgcrr2zdWc6tL+8ti5wSmozIHGu/4WX3QnfGX21O9Ok3/3ico6cpqtDxJMQCzSFjuswaffCet9eoG5kDjBclpdfxuTj2FXNyEe+Fyay+Pf5+69ZeyGYk3AIsHsEVeS7sZ84rbtipnaoci2H75G/B4r71MRLIjZ88VxuDbsbTFpjZ5gmJu2pejPp8W5cPxsg1wY1gQsEgwFwjvvcA6Ox6IdSbsrSqa3y9FPyY8JloxFhaSYwKS1lba9lpfmIm3MS/JIYU3AbMFc8eJgLUqCYh8JpgQ4KUnelYqfoTXmCdadwqhfaaffUd2fnktk62snMbIfwJqA+YIpBYuC48S9uKFooV/s+8UcShKF19Z3funqia6kfkzBhxRerrZobn9tre3mwfe8XHAdI37JjW8rhjUBswRzQeh3LhfStu3uaT/AabH9rgq2Q0l6sYsvP8w339fzYenGBFsQP4Z1wzphTpeDFMz22T8Zfm2Oaai9JBc/FtakPsTJsCZg0TdsKhy0Np4ZhzUBHy5Y2E2eoeOeeRvWBFjBUtG0yZn1YaFAEIwN0omZ/wMLBYJgAh5tcmZ93hQsFS4/23tUwTJb5WZeARJVizzdkCcSAAAAAElFTkSuQmCC" InformativeScreenshot="a6c0677899cc9d51865f396ef3e4e079.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/NQ5qqhOO3UGnCeAjfEu7NA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Into 'text  Agent Code'" sap:VirtualizedContainerService.HintSize="434,155" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[ExcelRow(&quot;txtAgent&quot;).ToString+ &quot;[k(tab)]&quot;]">
+              <ui:TypeInto.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="ee6616b0-17f9-462c-b492-3be0398e2bfb" InformativeScreenshot="d7265a7762c9386e1f719de14629a2e2" Selector="&lt;java name=' * - *' role='internal frame' /&gt;&lt;java name='Agent/Documents' role='page tab' /&gt;&lt;java name='Agent Code' role='text' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TypeInto.Target>
+            </ui:TypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Agent Percent'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,218" sap2010:WorkflowViewState.IdRef="NTypeInto_20" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Text="100[k(Tab)]" Version="V3">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable ContentHash="a2y2GN8YtE2HolbM0z_78w" DesignTimeRectangle="755, 205, 67, 25" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'Agent Percent'" FullSelectorArgument="&lt;java name='Agent/Documents' role='page tab' /&gt;&lt;java name='Agent/Documents tab page Percent' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Agent/Documents' role='page tab' /&gt;&lt;java name='Agent/Documents tab page Percent' role='text' /&gt;" Guid="e19f109a-cf73-4b78-9606-2f4e83d68337" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEcAAAAdCAYAAAD4pXGOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAC0SURBVGhD7dmxDcMgEEZhZk6VMhuwj6sMwBBZgppwSGfZmPzucw/pyTpkCj7JlVNrn0brwBGdcJ7bFrrZIvmmPR85h262SKWUvtH2DZvffY6W3X+2uOCsDkYopRc4vwJHBI4IHBE4InBE4IjAEYEjAkcEjggcETgicETgiMARgXMTOKJbHJtXB/89u/cFZ0x91VrHpr8UMV9uMXBs8KKvo0U6DqYVudli/NTzwb6zyJ0tcvsCBACVyT7yq38AAAAASUVORK5CYII=" InformativeScreenshot="a0d2f38ff53e2c39711c2a3e50c3a85e.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/ob5TCVW7Pk6487d-g4tuuQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V2" Visibility="Interactive">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="751, 180, 70, 26" FriendlyName="'Agent Percent'" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEQAAAAZCAYAAACIA4ibAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAFPSURBVFhH7ZW7dcMwDEW1kyqOogU4QxqtwBk8BQs33oNNtAnCjyCRL5BP6OTYSoLiFhZAiLwGqIFoIWVHhQAqBFAhgAoBVAigQgAVAqgQoFPIheww0ICYiVx4F/J/H48JMTMFWgUEljSeVkrwM1l3EWPI94VEghtzp1h/QiFhJpP2bF8pJHaNM+VZwtg6n2uMZEyKT+RTLG7c5t+8pjrAl+rFsbWcM657ucV1e83tXVxX4AdHhl+25/g0Qhzf1nB+PWLrsygh5QQ/5QMYd3ugHsSf0iFIfak2hynrSgcdbLhaI45cdz3uir3znj4yNTw+EuXAn2vcu4P6651MiPSPtgg1Ojuk5exCqpw887hBsQY8ayT01juIv05IJF18eVMr8Y4ph0nxgxrCV2aLd9VDIQv57etTr5PpFPL3USGACgFUCKBCgEbI2/X6ryFa6AMOAJh1d+XMaAAAAABJRU5ErkJggg==" SearchSteps="Image" TargetType="ImageBased" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Company'" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="NClick_17" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="37c8fcbf-4d68-4a75-81cb-0be587c053c8" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="YK6BEmaMJEygWDC4vxcNbQ" DesignTimeRectangle="79, 91, 73, 23" DesignTimeScaleFactor="1" ElementType="TabPage" FriendlyName="'Company'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' check:text='Company' /&gt;" Guid="75fa7a28-b3e1-4e89-819f-93c528b0826b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE0AAAAbCAYAAAA53gJaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHmSURBVGhD7ZXBlYMgEECtIx148rYF5OjLNTXE816yDXhOCdZharCdnFkGHBhGQCNJ3q7iez8vwADjz0CKr9NJZJ4jS1tB8X27CeDxeBh+7vddQ134cKT5FtgzXBY6KuBjGAbTkbFwYejISKPBGQsXBmRpM2RpK8jSVpClreAl0q5dIw5FIQqkbr1xWyFZ2rWtpahanPtet/tOHMtti0uSdu1bUcnKqlotzPSryivFsXP7t0KaNFZlIdzja2ViVVYNGZcV6sSPFatj5dwG9nTH1LjKZeyn89RatZxXmrFD06mxc+2uAVwgjvVx0qWVjbhEpPFqpKLNUR7XwFjTJhVrYs1cHQsC/HuM88YfAEU5+49C+dXCTw7n/dImicELuiLMy0bavhcKVYWzBxGvxkg+k/1YriHSpc1swsXGRMTafIyvrV9YHz8NlUZ+NNam4uE7VmSMNGnsWPj6J0m/odL0HqSaJpUWlqZjoQ3r2zViJEkDVOJOwvrl+D1lRNA7JSKJt2Pr8opXF/xCaRiv/oxmrhokWRqgk8ZjIWH3jE4Ux6eCn5FW1XYvc7mjUNPf2nkLpGH+uO8cL5H2CbjQV+ITGSNLk4T+hUPsWpq9NpZXGfBvpP0lsrQVLJaWn/jjSMMH2pkQg/gFp72u/tratVgAAAAASUVORK5CYII=" InformativeScreenshot="7d7dd463f07b1d6bb38eb3925252eb30.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/vyve9gg47U2HRkW-CNW_KA" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NGetText DisplayName="Get Text 'QuotationID'" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NGetText_1" TextString="[QuotationID]" Version="V3">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable ContentHash="OmWC-Srtj0-tO6eU7FP_OA" DesignTimeRectangle="224, 115, 187, 20" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'903209'" FullSelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Quotation ID' role='text' /&gt;" FuzzySelectorArgument="&lt;java name='Company' role='page tab' /&gt;&lt;java name='Quotation ID' role='text' check:text='903209' /&gt;" Guid="90b5200d-0a5d-41ce-b5a1-ef8eb7280609" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAL8AAAAYCAYAAACr8yxQAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGSSURBVHhe7Zg9coMwEEZz5aTKHZix74DPQGNfgNotF6CgpVa0INnLj5xNTCW9N/ONzVpaNQ8h/DGOoyOkxCA/KTYL+b+vV0KyjXZd8pBffvw6nwnJNusbYCO/fALkhngd3U7KD5AryA/FgvxQLGb57009XX+eanfphlB1rm/364vx7bYuqZouVI19VB3gXUzyi5gi303c65rn96F11V69k/rJy7qdKz2lPs+dx6T6JNcFOACT/Pfm5MVr3H266tzFS1v53XyWM9S1zIrFGE0Y/6pPal2AI/j7zq+kXcip6g/Cbr13XJG58SmQ6pNaF+AITPJ787yg4exd13b5hVDXT4Rnr9b103Wqz/66AEdglF8zHz9EZsuxZ31ckTmzzGFeqFn7bOsA/8Mmv3qBXbx4alFfvKhKn2lMGP8QPZLok1wX4ACMO//gbou/HEPZ07dNEFqf7VfjV7u+zvOJYOij1gV4F6P8APmB/FAsyA/F8qv8cQBATojXSfnjDUBIronsyi8ByBnt+kZ+QkoJ8pNCM7ofpw5nz/2JAS8AAAAASUVORK5CYII=" InformativeScreenshot="6c989e32319632c949b6d2b0fcea2a32.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/nzOwRrr8DkqQ1S6Z_fL7Mw" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NGetText.Target>
+            </uix:NGetText>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Click 'Save alt S''" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_10" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="AJymEBDaT0-lVNKOWnhb-Q" CvType="Button" DesignTimeRectangle="21, 122, 33, 25" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'Save alt S'" FullSelectorArgument="&lt;java name=' Save  alt S' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name=' Save  alt S' role='push button' check:text='Save  alt S' /&gt;" Guid="344d3e55-32b8-46e3-8901-a0445856199f" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACUAAAAdCAYAAAAtt6XDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFbSURBVFhH7ZZLdsMgDEXrNXfUWXaQ/WTEzlw9K+8gxMfIbp0MopPLRwi4YeSv2y2t78ZHapZK6hXhHQopRkrpMn4ejw3rUUmhcFmWrefc91iX34CZ/Qrm3/f7nBTHvudBOm4Jkb4YhVgzLdU6UA/SMcG8z+icP3gpPSRfiByx+ZpajEJcO/RSnEtXgBzxayX1eQTz8EtxI8GSZbRWksUoxFzopdh7JL3Ryin50pzTvNYelFLKi3ugLiPNmuE5dt2C/QGpfJAV8Ng67JN26/toHcEZk1L2IsWKkLJGmqfQKFSG/UkpcFaIYcVOS4EZIb00z1vBmoAU/8ke0ogQ4CWa07DjVmA9KLUnJo2RYeS9Na0ISY1fTJrnCwF/oe4rc70ISdkxpiVYL5mV8BGSQm/nKkNUxHNELCTFMfuIWERuWupqdqXwvdza+F/gvqEUYNGVeIdK6h34SM2R1l/aHIYgBKEU/gAAAABJRU5ErkJggg==" InformativeScreenshot="a6f52348abfedada7329eab350403387.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/EAAhsE0eKEeSbVuxdScJrw" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <ui:UiElementExists DisplayName="Element Exists 'text'" Exists="[Warning11]" sap:VirtualizedContainerService.HintSize="433.6,107.2" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="658447aa-6bb9-44ef-975a-7f96a453f966" InformativeScreenshot="4abfe2a8cd2386478a12bee592c036f7" Selector="&lt;java name=' TAKAFUL - *' role='internal frame' /&gt;&lt;java name='Warning *' role='internal frame' /&gt;&lt;java name='*' role='option pane' /&gt;&lt;java name='*' role='label' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+            <If Condition="[Warning11]" sap:VirtualizedContainerService.HintSize="433.6,380" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence sap:VirtualizedContainerService.HintSize="376.8,196.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'push button  OK'" sap:VirtualizedContainerService.HintSize="333.6,107.2" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click.CursorPosition>
+                      <ui:CursorPosition Position="Center">
+                        <ui:CursorPosition.OffsetX>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetX>
+                        <ui:CursorPosition.OffsetY>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:CursorPosition.OffsetY>
+                      </ui:CursorPosition>
+                    </ui:Click.CursorPosition>
+                    <ui:Click.Target>
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0568cded-0e68-451a-82d1-275842871482" InformativeScreenshot="358966bfab2ea6f50a163cf531a06ce2" Selector="&lt;java name=' TAKAFUL - *' role='internal frame' /&gt;&lt;java name='Warning *' role='internal frame' /&gt;&lt;java name='*' role='option pane' /&gt;&lt;java name='Continue ALT C' role='push button' /&gt;">
+                        <ui:Target.TimeoutMS>
+                          <InArgument x:TypeArguments="x:Int32" />
+                        </ui:Target.TimeoutMS>
+                        <ui:Target.WaitForReady>
+                          <InArgument x:TypeArguments="ui:WaitForReady" />
+                        </ui:Target.WaitForReady>
+                      </ui:Target>
+                    </ui:Click.Target>
+                  </ui:Click>
+                </Sequence>
+              </If.Then>
+              <If.Else>
+                <Sequence sap2010:WorkflowViewState.IdRef="Sequence_9" />
+              </If.Else>
+            </If>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK ALT O'" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="2wW5gUxKykS3iMw6ix_zqg" CvElementArea="279, 359, 51, 29" CvTextArea="298, 367, 17, 12" CvTextArgument="QK" CvType="Button" DesignTimeRectangle="280, 360, 48, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'OK ALT O'" FullSelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' check:text='OK ALT O' /&gt;" Guid="0d8c6268-c507-4946-837d-e42d162d38f1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAeCAYAAABjTz27AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVFhH7ZfRDYMgEIaZiF0YhT51CxMGYQCfeMedrj30FFFbqC05tSZfInjU/8uhpsI5B2fimkJCCNbMssaDFFrA+aCcY2Y6SYlFuq5jyb1tA2+FSGbtR7hxa5rXQkeSQa4ldDQZ5C/EnU2hb8t4b0HL6AOozHTNapBSg/V+qDWgkppcqgiRjNR2nDNqChwLkYwyvVwpdYSSDoS5EFyBQYnx+j4ZpI6QUYvt03dNgrYkJEE+7ykS8VL4CAk8X27NUphtOZLj/gwVvBTCGDs6yFJ9LlWEkJLXNhKEP3ieNoV+IVWDakKhKyus1e7hWh0KEweTyhLCv7VriznyVihMHkgqSwghKc5imC1bCMFCBBdxhTKOmWOBLWgRV2ZZ48EZOJmQgwc1XbxSznOQzwAAAABJRU5ErkJggg==" InformativeScreenshot="140b8c874563adef372bf1270dac292f.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/REuUD7-VHUGzkxC5Bqp0Cg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Delay_3" />
+            <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="433.6,86.4" sap2010:WorkflowViewState.IdRef="TakeScreenshot_3" Screenshot="[ScreenShotImage]">
+              <ui:TakeScreenshot.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7bfcd7fa-5459-4a3e-9c04-e34ba24a20ed">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:TakeScreenshot.Target>
+            </ui:TakeScreenshot>
+            <Assign sap:VirtualizedContainerService.HintSize="433.6,82.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[ApplicationScreenShotPath]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">["src\Results\Application_Screenshots\"+CurrentRow.item("TestDataID").ToString+"_"+now.ToString("HH-mm-ss")+".png"]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:SaveImage DisplayName="Save Image" FileName="[&quot;src\Results\Application_Screenshots\&quot;+CurrentRow.item(&quot;TestDataID&quot;).ToString+&quot;_&quot;+now.ToString(&quot;HH-mm-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="SaveImage_3" Image="[ScreenShotImage]" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'OK ALT O'" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_12" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="2wW5gUxKykS3iMw6ix_zqg" CvElementArea="279, 359, 51, 29" CvTextArea="298, 367, 17, 12" CvTextArgument="QK" CvType="Button" DesignTimeRectangle="280, 360, 48, 26" DesignTimeScaleFactor="1" ElementType="Button" FriendlyName="'OK ALT O'" FullSelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Plans' role='internal frame' /&gt;&lt;java name='OK ALT O' role='push button' check:text='OK ALT O' /&gt;" Guid="0d8c6268-c507-4946-837d-e42d162d38f1" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADQAAAAeCAYAAABjTz27AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAElSURBVFhH7ZfRDYMgEIaZiF0YhT51CxMGYQCfeMedrj30FFFbqC05tSZfInjU/8uhpsI5B2fimkJCCNbMssaDFFrA+aCcY2Y6SYlFuq5jyb1tA2+FSGbtR7hxa5rXQkeSQa4ldDQZ5C/EnU2hb8t4b0HL6AOozHTNapBSg/V+qDWgkppcqgiRjNR2nDNqChwLkYwyvVwpdYSSDoS5EFyBQYnx+j4ZpI6QUYvt03dNgrYkJEE+7ykS8VL4CAk8X27NUphtOZLj/gwVvBTCGDs6yFJ9LlWEkJLXNhKEP3ieNoV+IVWDakKhKyus1e7hWh0KEweTyhLCv7VriznyVihMHkgqSwghKc5imC1bCMFCBBdxhTKOmWOBLWgRV2ZZ48EZOJmQgwc1XbxSznOQzwAAAABJRU5ErkJggg==" InformativeScreenshot="140b8c874563adef372bf1270dac292f.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/REuUD7-VHUGzkxC5Bqp0Cg" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image, CV" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <Delay Duration="00:00:02" sap:VirtualizedContainerService.HintSize="433.6,90.4" sap2010:WorkflowViewState.IdRef="Delay_5" />
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Click 'Exit Application alt X''" sap:VirtualizedContainerService.HintSize="433.6,157.6" sap2010:WorkflowViewState.IdRef="NClick_13" KeyModifiers="None" MouseButton="Left" Version="V3">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable ContentHash="ulmzXEIsPkWjAlsI6AkWOQ" CvType="Icon" DesignTimeRectangle="21, 482, 33, 28" DesignTimeScaleFactor="1" ElementType="Icon" FriendlyName="'Exit Application alt X'" FullSelectorArgument="&lt;java name='Exit Application alt X' role='push button' /&gt;" FuzzySelectorArgument="&lt;java name='Exit Application alt X' role='push button' check:text='Exit Application alt X' /&gt;" Guid="ceb724d0-f611-479c-a708-bd6f569f8907" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACUAAAAgCAYAAACVU7GwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD1SURBVFhH7ZdBDoIwFETlzK7ccQPuw6o3qzMqyWf+BxrTogGIb2x/x/DSnbe+T/nfuKRKcVK/eNRhJjU9KaXdeIzjC+vhpFjsug7kjM/7W7FzrnUfrZXPGd93H4YjSXGtIGboPOrKrM5NcWbhjHw5O6AU1wpihs6jrszq3BSxc651b9fRuZkdSKoliBNKIRaJ+gTR/qYQIVGXINpLEYQj6hHECW8KsUjUJ4h2UgiHnWt/AtFGCuHQc7u3IOpLIRxRbwlEXSmEI+qtgagnhXBEvS0Q7aSiTgmIYqm92ZTi353oh63g+1alyFTaE3VwUv/AJVVGyk9PaMNuXDdAAQAAAABJRU5ErkJggg==" InformativeScreenshot="87e74163b1e16f0f62e09121fe22a667.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/ti3u7pxQI0mymY4Lzyu7ZQ" ScopeSelectorArgument="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" SearchSteps="Selector, FuzzySelector, Image" Version="V2" Visibility="Interactive" />
+              </uix:NClick.Target>
+            </uix:NClick>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" ContentHash="402qQfq2rkCpPnOBzqtShA" FilePath="C:\Program Files (x86)\Java\jre1.8.0_221\bin\jp2launcher.exe" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZwSURBVFhHtZfZU5NXGIe/f6CXdaa96fSmHa975XTGybSdLnbaTsd2xlatjnVhWuqCKGC1LAoosgQVWWQREFBBFtk3Q8K+CLKFAElIQlZCCGELm/563qNxMHxQtfrNPBO+s7zPyVneEwTPk1nRLmEEM2QMvCUoNjkkz7RPn4zyNknhgy40dA5CpTVgZmYG8/PzcLvdbwSKRTEpNjnIRU4uTyttkRTUd6JnSIO5uTmsrKzg8ePHeNMPxaTY5CAXOcktpBQ3Bde39WF2dharq6t48uTJa7EyocHjZbdo3VrIQS5ykltIKpTLBoa1WFxc5KN8HVYX2JJ13MLqnEO03htykZPcQkK+DJOTk1haWuKje2WW3JhRJGGm+hJW2EBE23hBLnKSW7hyu46/LC8v8zV6JRbn4KqLge2iBAsj8ufly+5ZrGwSj1zkJLcQm1MNu93OR0UVL8uSywZnyT8wB23FdHUUL3OPdWC2Iw9ufTeWF93r+nggFznJLVzOqoDNZuPHhdbmZViwDMOe9hvMgR/DWR2NhfEBTBX/DUf2EbhkCbxerJ8HcpGT3EJkRimsVisWFhZeOLsbMWfox0T8tzD7fwhX803MmYf4+4T0G8z0lor28YZc5CS3cCG1GBaLhScLqtiM+Skz7Bn7YDz2Hpy1Uiy4JmGL+wrWi9sxq+8T7SMGuchJbiEkqQBms5knCKrYDFd/NUz+H8Aa8wXmZ1xwshkY/2sLnIo00fYbQS5ykls4m3AHRqORp0pKEJsxrWyAKeAj2LMP8/fJ8ggYfd+FPdcXs07HuvYbQS5yklsIjM/F+Pg4XC4Xr9iUKTblmYdgCfsE07p+OHsrYTrxPoxHt8DRcku8jwjkIie5Bf/YLOj1ejidTkxPT/8nLr2Sr7ntXhCmpxywZflg3OcdmKM+w7RFL9rHG3KRk9zC8agM6HQ6TE1N8YqNmGJMPmuje6TAXNwOODoK4DSpYT6zFZYL2+C0GJ63d7C2nvbekIuc5BZ8I29Aq9XyzORwOF5gkmG1TUBrMELe0QtZ2yOM6ExP63pqYZVnYlLTA3vs17Ao8ni5ncUxWqyob+1BWmEtapq6XojJ+7I25CS34HM+ERqNhmcmbzT6cVzPq4BfVDoupxehStGJPpWal6sNZowxLM2FUNXnoW/EwOo0aHukREfvEOrYAMJT8rE7UCoemznJLRwMvga1Wo2JiYl19A+N4nRsJvaeuYJjkam4mlMG6a37iMksQnhWFeKyipGekozQa9k4Fn8PEan3cLeyEeox/fMYR1m/tTE9kJPcwv6zUoyMjPDM5I2JJYsx9m17lSO4UylHVkk96loeora5C7VNnahq7EJF8yM0dg6gj7UZ1epgYMfL07+1ewC7A+Kev6+FnOQW9gTGYHh4mGemjRgYHoV/dAaCE3JRx+RNnX3oHlBxmjp7Ud3YgdsVchTXNUMzpuN9FGzP+Ian4ARbPu94BDnJLew6FYWhoSGYTKYNGVSNQppVguOX0nAkNBGHghPY9CXgcMh1+IQl4sC5a5zQ63l42D8EeXsP4jJLkJBbBuWwWjQmOckt/HQiAkqlkmemzTCwxFEma8X9+hZUyduRX6VAQbWCLUUXF/YOqqAzGDgtD/vQ3tMvGscDOckt/Hj0/EsN4AFb+/1nr+LslVu4w6a7lA2mtL4V+ZUKJOaVI/ZmMeRtPaJ9xSAnuYXv/gyBSqXil4M3tLGK2LpWyDsga+3GheR8/B58HbuDpNjpF42fT0bjF7bJ9gTFwzciFdklD9bFUGv168oIcpJb2OFzTnQA6UW18Lt8E5HsaHX2KqHTGzBuNKGf5QHaYGWydpQ3tLNT0c2me5CttYadGMMLMXLLGhDL9sLaMg/kJLfw5aEzfEPQzqRfKR58LtzAzpMxOBiajIvpxSyr1fGZqGVCDzVrPmuau3mbq7nlCEvKZ7v/Jsv12bjPBro2LkEucpJb+PxAgKyoso4Xrs1UlNUq2TlPuluDkMR8BMTn4I+INBwKS8bh8zc4R9ggPX8TvpHp7Iq9DWlOOYrr2zEwooWVJZ21cQlykZPcgmTfqeDIxCy+MShH00XxNiEHuchJbmH7Xj/JD4dPI6fo6Y9Tuq3oyqQ7+03iuYbJQS5ykpv/f/jpr8cl37OC0+FSFJRV8ykSS5//B4pJsclBLnJyuefZtuuohBHMkDHwlqDY5HgmF4R/ARUBpif6Ux1LAAAAAElFTkSuQmCC" InformativeScreenshot="f5245f3850d874dd30716cf71cbe108e.png" Reference="_4BeS_pdmkqit54Zi6Lc3g/wdHhlV5LNUivPNJaDTrotw" Selector="&lt;wnd app='jp2launcher.exe' cls='SunAwtFrame' title='*' /&gt;" Title="Jubilee Insurance Company" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
