@@ -1,0 +1,1685 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TestCase1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="Excel_TestData1" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="Flag" Type="InOutArgument(sd:DataColumn)" />
+    <x:Property Name="TestCaseID" Type="InOutArgument(sd:DataColumn)" />
+    <x:Property Name="Config" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="RowCount" Type="InOutArgument(x:Int32)" />
+    <x:Property Name="In_ConfigFile" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="IdentityNo" Type="InOutArgument(x:String)" />
+    <x:Property Name="PolicyNumber" Type="InOutArgument(x:String)" />
+    <x:Property Name="ExcelRow" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="ExcelData_Main" Type="InOutArgument(sd:DataRow)" />
+    <x:Property Name="Testcase_Id" Type="InOutArgument(x:String)" />
+    <x:Property Name="Plno" Type="InOutArgument(x:String)" />
+    <x:Property Name="Test_Start_Time" Type="InOutArgument(x:String)" />
+    <x:Property Name="Test_End_Time" Type="InOutArgument(x:String)" />
+    <x:Property Name="Exe_Stat" Type="InOutArgument(x:String)" />
+    <x:Property Name="ClNo" Type="InOutArgument(x:String)" />
+    <x:Property Name="OutStandingDate" Type="InArgument(x:String)" />
+    <x:Property Name="ExceptionImage" Type="InArgument(ui:Image)" />
+    <x:Property Name="GrPloyNo" Type="InOutArgument(x:String)" />
+    <x:Property Name="QID" Type="InOutArgument(x:String)" />
+    <x:Property Name="BillingNo1" Type="InOutArgument(x:String)" />
+    <x:Property Name="BillingNo2" Type="InOutArgument(x:String)" />
+    <x:Property Name="ScreenShotImage" Type="InOutArgument(ui:Image)" />
+    <x:Property Name="outputFolder" Type="InOutArgument(x:Object)" />
+    <x:Property Name="Config_Results" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="IdentityNo2" Type="InOutArgument(x:String)" />
+    <x:Property Name="VoucherNumber" Type="InOutArgument(x:String)" />
+    <x:Property Name="OutDate_3years" Type="InOutArgument(x:String)" />
+    <x:Property Name="New_Date" Type="InOutArgument(x:String)" />
+  </x:Members>
+  <this:TestCase1.ExceptionImage>
+    <InArgument x:TypeArguments="ui:Image" />
+  </this:TestCase1.ExceptionImage>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>742,4192</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>TestCase1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.CV</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="TestCase1" sap:VirtualizedContainerService.HintSize="752,4127" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="ConfigDT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="TestDT" />
+      <Variable x:TypeArguments="sd:DataTable" Name="FilteredTestDT1" />
+      <Variable x:TypeArguments="sd:DataTable" Name="TestDT1" />
+      <Variable x:TypeArguments="x:String" Name="Value" />
+      <Variable x:TypeArguments="sd:DataRow" Name="ExcelRowMain" />
+      <Variable x:TypeArguments="sd:DataRow" Name="Config" />
+      <Variable x:TypeArguments="sd:DataTable" Name="DT_ExecutionRes" />
+      <Variable x:TypeArguments="x:String" Name="Exe_Status" />
+      <Variable x:TypeArguments="x:String" Name="StartTime" />
+      <Variable x:TypeArguments="x:String" Name="EndTime" />
+      <Variable x:TypeArguments="sd:DataRow" Name="TestDataRow" />
+      <Variable x:TypeArguments="x:String" Name="ExceptionActivity" />
+      <Variable x:TypeArguments="x:String" Name="ExceptionMessage" />
+      <Variable x:TypeArguments="x:String" Name="ExceptionScreenShotPath" />
+      <Variable x:TypeArguments="x:String" Name="PolicyNoRegistered" />
+      <Variable x:TypeArguments="x:String" Name="ApplicationScreenShotPath" />
+      <Variable x:TypeArguments="x:String" Name="IdenNo_Exp" />
+      <Variable x:TypeArguments="x:String" Name="customerCode" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Config_Files\Config_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="690,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_801" UnSafe="False" WorkflowFileName="Config_Files\Config_SICOM.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="Out_ConfigFile">[In_ConfigFile]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="690,281" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[In_ConfigFile(&quot;TestData_Path&quot;).ToString]">
+      <ui:ExcelApplicationScope.Body>
+        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,171" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ExcelReadRange Range="{x:Null}" AddHeaders="True" DataTable="[TestDT1]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="388,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" SheetName="[In_ConfigFile(&quot;TDSheetName&quot;).ToString]" />
+          </Sequence>
+        </ActivityAction>
+      </ui:ExcelApplicationScope.Body>
+    </ui:ExcelApplicationScope>
+    <ui:FilterDataTable DataTable="[TestDT1]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="689.6,162.4" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[FilteredTestDT1]" SelectColumnsMode="Keep">
+      <ui:FilterDataTable.Filters>
+        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+          <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:String">["TestCaseID"]</InArgument>
+            </ui:FilterOperationArgument.Column>
+            <ui:FilterOperationArgument.Operand>
+              <InArgument x:TypeArguments="x:String">["LIFE_CONV"]</InArgument>
+            </ui:FilterOperationArgument.Operand>
+          </ui:FilterOperationArgument>
+          <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+            <ui:FilterOperationArgument.Column>
+              <InArgument x:TypeArguments="x:String">["ExecutionFlag"]</InArgument>
+            </ui:FilterOperationArgument.Column>
+            <ui:FilterOperationArgument.Operand>
+              <InArgument x:TypeArguments="x:String">["Yes"]</InArgument>
+            </ui:FilterOperationArgument.Operand>
+          </ui:FilterOperationArgument>
+        </scg:List>
+      </ui:FilterDataTable.Filters>
+      <ui:FilterDataTable.SelectColumns>
+        <scg:List x:TypeArguments="InArgument" Capacity="4">
+          <x:Null />
+        </scg:List>
+      </ui:FilterDataTable.SelectColumns>
+    </ui:FilterDataTable>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExcelUtilities\ExcelDataClear_RERUN.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="689.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_802" UnSafe="False" WorkflowFileName="ExcelUtilities\ExcelDataClear_RERUN.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ApplicationLogin_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="689.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_721" UnSafe="False" WorkflowFileName="ApplicationLogin\ApplicationLogin_SICOM.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InOutArgument x:TypeArguments="sd:DataRow" x:Key="LoginApp">[Config]</InOutArgument>
+        <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="Config_Login">[In_ConfigFile]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <If Condition="[FilteredTestDT1.RowCount= 0]" sap:VirtualizedContainerService.HintSize="689.6,3032" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="377.6,232" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334.4,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;Please select execution Flag&quot;]" />
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence sap:VirtualizedContainerService.HintSize="656,2616.8" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="612.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[RowCount]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">4</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[FilteredTestDT1]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="612.8,2405.6" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+            <ui:ForEachRow.Body>
+              <ActivityAction x:TypeArguments="sd:DataRow">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="579.2,2217.6" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="536,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[RowCount]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[RowCount+1]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="536,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[Value]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[CurrentRow.item("TestDataID").ToString]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="536,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                    <ui:CommentOut.Body>
+                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,196" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="388,85" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[Value]" />
+                      </Sequence>
+                    </ui:CommentOut.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:CommentOut>
+                  <Assign sap:VirtualizedContainerService.HintSize="536,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="sd:DataRow">[TestDataRow]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="sd:DataRow">[CurrentRow]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="536,1670.4" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <TryCatch.Try>
+                      <Sequence sap:VirtualizedContainerService.HintSize="559.2,1428.8" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:String" Name="PolicyDate" />
+                          <Variable x:TypeArguments="x:String" Name="CustomerRegistered" />
+                          <Variable x:TypeArguments="ui:Image" Name="ExceptionImage" />
+                          <Variable x:TypeArguments="ui:Image" Name="ScreenShotImage" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="496.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_57">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[Test_Start_Time]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[Now.ToString("HH:mm:ss")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExcelUtilities\WriteValues - IdentityCode_RERUN.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="496.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_803" UnSafe="False" WorkflowFileName="ExcelUtilities\WriteValues - IdentityCode_RERUN.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InOutArgument x:TypeArguments="sd:DataRow" x:Key="TestData">[TestDataRow]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="Range">[RowCount]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exe_Status">[Exe_Status]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Start_Time">[StartTime]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="End_Time">[EndTime]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exception_Message">[ExceptionMessage]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exception_Activity">[ExceptionActivity]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exception_SS">[ExceptionScreenShotPath]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="IdentityNo">[IdentityNo]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Policy_Number_Write">[Plno]</InOutArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                        <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[TestDataRow(&quot;TestDataID&quot;).ToString]" sap:VirtualizedContainerService.HintSize="496.8,280" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Sequence x:Key="SICOM_001" sap:VirtualizedContainerService.HintSize="450,81" sap2010:WorkflowViewState.IdRef="Sequence_445">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_720" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_723" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Proposal_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_724" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Proposal_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="JavaSecurityBlock" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_UnderWriting_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_725" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_UnderWriting_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_726" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_QualityCheck.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_718" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_QualityCheck.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_PolicyIssuance.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_719" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_PolicyIssuance.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_727" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_272">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,530" sap2010:WorkflowViewState.IdRef="Sequence_455">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OutStandingQuery_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_779" UnSafe="False" WorkflowFileName="TestCases\SICOM\OutStandingQuery_SICOM.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="OutDate_Enquiry">[OutStandingDate]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Outstanding_PolicyNo">[Plno]</InOutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_Premium Payment SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_780" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_Premium Payment SICOM.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                      <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_800" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                      <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:CommentOut>
+                          </Sequence>
+                          <Sequence x:Key="SICOM_002" sap:VirtualizedContainerService.HintSize="450,2060" sap2010:WorkflowViewState.IdRef="Sequence_446">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="customerCode" />
+                              <Variable x:TypeArguments="x:String" Name="customerCode2" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_728" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_729" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_730" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo2]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode2]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_731" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode2]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Proposal_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_732" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Proposal_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="JavaSecurityBlock" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_UnderWriting_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_733" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_UnderWriting_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_734" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_QualityCheck.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_735" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_QualityCheck.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_PolicyIssuance.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_736" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_PolicyIssuance.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_737" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ClaimRegistration - SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_740" UnSafe="False" WorkflowFileName="TestCases\SICOM\ClaimRegistration - SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo2]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ClaimNo">[ClNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ClaimProcessing - SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_739" UnSafe="False" WorkflowFileName="TestCases\SICOM\ClaimProcessing - SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo2]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ClaimNo">[ClNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="VoucherNumber">[VoucherNumber]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TestCases\Voucher_Enquiry - HLA.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_738" UnSafe="False" WorkflowFileName="TestCases\Voucher_Enquiry - HLA.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo2]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="VoucherNumber">[VoucherNumber]</InOutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="in_AppSrcPath">src\Results\Application_Screenshots\</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                          <Sequence x:Key="SICOM_003" sap:VirtualizedContainerService.HintSize="450,1540" sap2010:WorkflowViewState.IdRef="Sequence_447">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="customerCode" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_741" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_742" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Proposal_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_743" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Proposal_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="JavaSecurityBlock" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_UnderWriting_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_744" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_UnderWriting_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_745" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_QualityCheck.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_746" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_QualityCheck.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_PolicyIssuance.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_747" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_PolicyIssuance.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_748" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NonFinacialAlterations1_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_749" UnSafe="False" WorkflowFileName="TestCases\SICOM\NonFinacialAlterations1_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="BillingNo1">[BillingNo1]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="BillingNo2">[BillingNo2]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="388,52" sap2010:WorkflowViewState.IdRef="CommentOut_271">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="450,224" sap2010:WorkflowViewState.IdRef="Sequence_454">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Alteration_Enquiry_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_750" UnSafe="False" WorkflowFileName="TestCases\SICOM\Alteration_Enquiry_SICOM.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                      <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:CommentOut>
+                          </Sequence>
+                          <Sequence x:Key="SICOM_004" sap:VirtualizedContainerService.HintSize="450.4,1600.8" sap2010:WorkflowViewState.IdRef="Sequence_448">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="customerCode" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="TestCases\CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_751" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_752" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Proposal_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_753" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Proposal_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="JavaSecurityBlock" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_UnderWriting_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_754" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_UnderWriting_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_755" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_QualityCheck.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_756" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_QualityCheck.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_PolicyIssuance.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_757" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_PolicyIssuance.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_758" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CoolingOffCancellation SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_759" UnSafe="False" WorkflowFileName="TestCases\SICOM\CoolingOffCancellation SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="RequestDate" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_760" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                          <Sequence x:Key="SICOM_005" sap:VirtualizedContainerService.HintSize="450.4,836.8" sap2010:WorkflowViewState.IdRef="Sequence_449">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="customerCode" />
+                              <Variable x:TypeArguments="x:String" Name="candRefCode" />
+                              <Variable x:TypeArguments="x:String" Name="AgentCode" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_761" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_762" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Agent Entry Individual SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_763" UnSafe="False" WorkflowFileName="TestCases\SICOM\Agent Entry Individual SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="candRefCode">[candRefCode]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="NewAgentCode">[Plno]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Agent Approval SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_765" UnSafe="False" WorkflowFileName="TestCases\SICOM\Agent Approval SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="candRefCode">[candRefCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Agent_Enquiry SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_764" UnSafe="False" WorkflowFileName="TestCases\SICOM\Agent_Enquiry SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="AgentCode">[Plno]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                          <Sequence x:Key="SICOM_006" sap:VirtualizedContainerService.HintSize="450.4,1906.4" sap2010:WorkflowViewState.IdRef="Sequence_450">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="customerCode" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_766" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_767" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Proposal_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_768" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Proposal_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="JavaSecurityBlock" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_UnderWriting_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_769" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_UnderWriting_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_770" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_QualityCheck.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_771" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_QualityCheck.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_PolicyIssuance.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_772" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_PolicyIssuance.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM Surrender.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_775" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM Surrender.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate_3years">[OutDate_3years]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="OutStandingQuery_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_773" UnSafe="False" WorkflowFileName="TestCases\SICOM\OutStandingQuery_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate_Enquiry">[OutDate_3years]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Outstanding_PolicyNo">[Plno]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_Premium Payment SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_776" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_Premium Payment SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Surrender SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_777" UnSafe="False" WorkflowFileName="TestCases\SICOM\Surrender SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNumber">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM Surrender.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_778" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM Surrender.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate_3years">[OutDate_3years]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                          <Sequence x:Key="SICOM_007" sap:VirtualizedContainerService.HintSize="450.4,2212" sap2010:WorkflowViewState.IdRef="Sequence_453">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="customerCode" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="CustomerRegistration_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_782" UnSafe="False" WorkflowFileName="TestCases\SICOM\CustomerRegistration_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Customer_Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_783" UnSafe="False" WorkflowFileName="TestCases\SICOM\Customer_Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="customerCode">[customerCode]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Proposal_SICOM UNIT LINK.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_793" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Proposal_SICOM UNIT LINK.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                                <InArgument x:TypeArguments="x:Boolean" x:Key="JavaSecurityBlock" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_UnderWriting_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_785" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_UnderWriting_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_786" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_QualityCheck.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,112.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_787" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_QualityCheck.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_PolicyIssuance.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_788" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_PolicyIssuance.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow" />
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow" />
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_Enquiry_OutDate SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_792" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_Enquiry_OutDate SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PricingBatch and FundValue SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_794" UnSafe="False" WorkflowFileName="TestCases\SICOM\PricingBatch and FundValue SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="PricingDate" />
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Pricing Input Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_795" UnSafe="False" WorkflowFileName="TestCases\SICOM\Pricing Input Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ChargeDripping Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_796" UnSafe="False" WorkflowFileName="TestCases\SICOM\ChargeDripping Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="OutDate_Enquiry">[OutStandingDate]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Outstanding_PolicyNo">[Plno]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="NB_IssueReceipts_Premium Payment SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_797" UnSafe="False" WorkflowFileName="TestCases\SICOM\NB_IssueReceipts_Premium Payment SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="PricingBatch and FundValue SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_798" UnSafe="False" WorkflowFileName="TestCases\SICOM\PricingBatch and FundValue SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="txtIdenNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="In_CurrentTestDataRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestRow">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Test_End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="ExceptionScreenShotPath">[ExceptionScreenShotPath]</InOutArgument>
+                                <InArgument x:TypeArguments="sd:DataRow" x:Key="CurrentTestCaseRow">[TestDataRow]</InArgument>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="ExcelRowMain">[ExcelRowMain]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="PolicyNo">[Plno]</InOutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="PricingDate" />
+                                <InOutArgument x:TypeArguments="ui:Image" x:Key="ScreenShotImage">[ScreenShotImage]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Pricing Input Query SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="388,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_799" UnSafe="False" WorkflowFileName="TestCases\SICOM\Pricing Input Query SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <scg:Dictionary x:TypeArguments="x:String, Argument" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </Switch>
+                        <Assign sap:VirtualizedContainerService.HintSize="496.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_70">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[ExceptionMessage]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Nill</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="496.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_71">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[EndTime]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[Now.ToString("HH:mm:ss")]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="496.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_72">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[ExceptionActivity]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Nill</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="496.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_73">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[Exe_Status]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Pass</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap:VirtualizedContainerService.HintSize="496.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_74">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[ApplicationScreenShotPath]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">["src\Results\Application_Screenshots\"+CurrentRow.item("TestDataID").ToString]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExcelUtilities\WriteValues - Part2_RERUN.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="496.8,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_804" UnSafe="False" WorkflowFileName="ExcelUtilities\WriteValues - Part2_RERUN.xaml">
+                          <ui:InvokeWorkflowFile.Arguments>
+                            <InOutArgument x:TypeArguments="sd:DataRow" x:Key="TestData">[TestDataRow]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:Int32" x:Key="Range">[RowCount]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exe_Status">[Exe_Status]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Start_Time">[StartTime]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="End_Time">[EndTime]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exception_Message">[ExceptionMessage]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exception_Activity">[ExceptionActivity]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Exception_SS">[ExceptionScreenShotPath]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="IdentityNo">[IdentityNo]</InOutArgument>
+                            <InOutArgument x:TypeArguments="x:String" x:Key="Policy_Number_Write">[Plno]</InOutArgument>
+                          </ui:InvokeWorkflowFile.Arguments>
+                        </ui:InvokeWorkflowFile>
+                      </Sequence>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="502.4,1505.6" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+                          </ActivityAction.Argument>
+                          <Sequence sap:VirtualizedContainerService.HintSize="496,1435.2" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="ui:Image" Name="ExceptionImage" />
+                              <Variable x:TypeArguments="x:String" Name="CustomerRegistered" />
+                              <Variable x:TypeArguments="x:String" Name="IdentityNo" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:TakeScreenshot WaitBefore="{x:Null}" DisplayName="Take Screenshot" sap:VirtualizedContainerService.HintSize="433.6,86.4" sap2010:WorkflowViewState.IdRef="TakeScreenshot_2" Screenshot="[ExceptionImage]">
+                              <ui:TakeScreenshot.Target>
+                                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="7bfcd7fa-5459-4a3e-9c04-e34ba24a20ed">
+                                  <ui:Target.TimeoutMS>
+                                    <InArgument x:TypeArguments="x:Int32" />
+                                  </ui:Target.TimeoutMS>
+                                  <ui:Target.WaitForReady>
+                                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                                  </ui:Target.WaitForReady>
+                                </ui:Target>
+                              </ui:TakeScreenshot.Target>
+                            </ui:TakeScreenshot>
+                            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_25">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[ExceptionScreenShotPath]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">["src\Results\Exception_Screenshots\"+CurrentRow.item("TestDataID").ToString+"_"+now.ToString("HH-mm-ss")+".png"]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:SaveImage DisplayName="Save Image" FileName="[&quot;src\Results\Exception_Screenshots\&quot;+CurrentRow.item(&quot;TestDataID&quot;).ToString+&quot;_&quot;+now.ToString(&quot;HH-mm-ss&quot;)+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="433.6,134.4" sap2010:WorkflowViewState.IdRef="SaveImage_2" Image="[ExceptionImage]" />
+                            <ui:CloseWindow TimeoutMS="{x:Null}" UseWindow="{x:Null}" DisplayName="Close Window 'msedge.exe Oracle'" sap:VirtualizedContainerService.HintSize="434,107" sap2010:WorkflowViewState.IdRef="CloseWindow_8" InformativeScreenshot="58a3da1e8400b95b57a9a352c689061f" Selector="&lt;html app='msedge.exe' title='Oracle Fusion Middleware Forms Services - WebUtil' /&gt;" WaitForReady="INTERACTIVE" />
+                            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_26">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[Exe_Status]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">Fail</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_27">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[EndTime]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[Now.ToString("HH:mm:ss")]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_28">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[ExceptionMessage]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[ex.Message]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_29">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[ExceptionActivity]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[ex.Source]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ExcelUtilities\WriteValues - Part3_RURUN.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_805" UnSafe="False" WorkflowFileName="ExcelUtilities\WriteValues - Part3_RURUN.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="TestData">[TestDataRow]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:Int32" x:Key="Range">[RowCount]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Exe_Status">[Exe_Status]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Start_Time">[StartTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="End_Time">[EndTime]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Exception_Message">[ExceptionMessage]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Exception_Activity">[ExceptionActivity]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Exception_SS">[ExceptionScreenShotPath]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="IdentityNo">[IdentityNo]</InOutArgument>
+                                <InOutArgument x:TypeArguments="x:String" x:Key="Policy_Number_Write">[Plno]</InOutArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="argument1" />
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="ApplicationLogin_SICOM.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_722" UnSafe="False" WorkflowFileName="ApplicationLogin\ApplicationLogin_SICOM.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InOutArgument x:TypeArguments="sd:DataRow" x:Key="LoginApp">[Config]</InOutArgument>
+                                <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="Config_Login">[In_ConfigFile]</InOutArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                            </ui:InvokeWorkflowFile>
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachRow.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachRow>
+        </Sequence>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
